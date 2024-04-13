@@ -3,7 +3,7 @@
 ---
     <header>
         <div class="logo">
-            <img src="" alt="Logo" />
+            <img src="./jujutsu_logo.webp" alt="Logo" />
             <span>JK</span>
         </div>
         <nav>
@@ -20,6 +20,16 @@
     </header>
   </body>
   <style>
+    .logo{
+        display: flex;
+        gap:5px;
+        align-items: center;
+    }
+    img{
+        display: inline-block;
+        width:30px;
+        height:30px;
+    }
     .active{
         color: #8C5EE7;
     }
@@ -45,6 +55,7 @@
         justify-content: space-between;
         align-items: center;
         width: 1152px;
+        height: 50px;
         margin: 0 auto;
 
         box-sizing: border-box;
@@ -80,6 +91,30 @@
         line-height: normal;
     }
     .profBtn{
+         position: relative;
+    }
+    .profBtn>a{
+        box-sizing: border-box;
+
+        padding: 4px 18px;
+        border-radius: 10px;
+        background: #E2DBF0;
+    }
+    .profBtn>a:hover{
+        color: #FFF;
+        background: #8C5EE7;
+    }
+    .profBtn>a:hover::after{
+        content: "";
+        display: block;
+
+        position: absolute;
+        bottom: -4px;
+        right: 115px;
+        width: 1px;
+        height: 30px;
+
+        background: #8C5EE7;
     }
   </style>
 
