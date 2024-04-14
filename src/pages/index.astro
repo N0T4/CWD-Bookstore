@@ -2,4 +2,175 @@
 import Layout from "./layout.astro";
 ---
 
-<Layout />
+<Layout>
+  <section class="hero">
+    <h1>BOOK STORE</h1>
+    <div class="hero-top">
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+    </div>
+    <div class="hero-bottom">
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+      <ul>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+        <li><img src="" alt="" /></li>
+      </ul>
+    </div>
+  </section>
+</Layout>
+<style>
+  h1 {
+    z-index: 10;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    background: var(--GR, linear-gradient(173deg, #b7a1e4 -0.15%, #fff 53.1%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    background: var(
+      --MAINGR,
+      linear-gradient(130deg, #000 25.43%, #8c5ee7 140.97%)
+    );
+  }
+  .hero::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 600px;
+    background: rgba(140, 94, 231, 0.1);
+    backdrop-filter: blur(7.5px);
+  }
+  .hero-top {
+    padding: 0px;
+    white-space: nowrap;
+    display: flex;
+    position: absolute;
+    top: -90px;
+  }
+  .hero-bottom {
+    padding: 0px;
+    white-space: nowrap;
+    display: flex;
+    position: absolute;
+    bottom: -90px;
+  }
+  .hero-top > ul {
+    padding-left: 15px;
+    animation: 30s slideRight infinite linear;
+    white-space: nowrap;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  .hero-bottom > ul {
+    padding-left: 15px;
+    animation: 30s slideLeft infinite linear;
+
+    white-space: nowrap;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  img {
+    display: block;
+    border: 3px solid #fff;
+    opacity: 0.6;
+    background-color: gray;
+    width: 146px;
+    height: 230px;
+  }
+  @keyframes slideLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes slideRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+</style>
