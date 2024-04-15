@@ -3,4 +3,20 @@ import Layout from "./layout.astro";
 ---
 
 <Layout> <div> Ass
-    </div></Layout>
+    </div>
+    <style>
+        @import '@splidejs/splide/dist/css/splide.min.css';
+    </style>
+    <script>
+        import Splide from '@splidejs/splide';
+        import { onMount } from 'svelte';
+      
+        let splide;
+      
+        onMount(() => {
+          splide = new Splide('.splide', {
+            // Splide options here
+          }).mount();
+        });
+      </script>
+</Layout>
