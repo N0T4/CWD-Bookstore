@@ -107,11 +107,28 @@ import Card from "../components/cards/cardSale.astro";
       </div>
     </div>
   </section>
+  <section class="CHARACTERS">
+    <h2>CHARACTERS</h2>
+    <div class="c heros">
+      <div class="barLeft"></div>
+      <div class="character"></div>
+      <div class="barRiht"></div>
+    </div>
+  </section>
 </Layout>
 <style>
   * {
     margin: 0px;
     padding: 0px;
+  }
+  .heros {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 1152px;
+    padding-top: 60px;
   }
   .container {
     display: flex;
@@ -122,11 +139,46 @@ import Card from "../components/cards/cardSale.astro";
     width: 1152px;
     padding-top: 60px;
   }
+  .character {
+    display: inline-block;
+    width: 799px;
+    height: 563px;
+    border-radius: 30px;
+    background-color: gray;
+    margin-left: 62px;
+    margin-right: 62px;
+  }
+
+  .CHARACTERS {
+    margin-top: 137px;
+    margin-bottom: 142px;
+  }
+  h2 {
+    color: #000;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 99px;
+  }
   .menuCatalog {
     background: rgba(226, 219, 240, 0.62);
   }
-  .container {
+  .barLeft {
+    width: 120px;
+    height: 576px;
+    border-radius: 30px;
+    background: #e2dbf0;
   }
+  .barRiht {
+    width: 120px;
+    height: 576px;
+    border-radius: 30px;
+    background: #e2dbf0;
+  }
+
   .menu {
     display: flex;
     justify-content: center;
@@ -171,6 +223,7 @@ import Card from "../components/cards/cardSale.astro";
 
     text-decoration: none;
   }
+
   ul {
     gap: 59px;
     list-style: none;
