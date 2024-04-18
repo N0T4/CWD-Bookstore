@@ -1,5 +1,6 @@
 ---
 import Layout from "./layout.astro";
+import Card from "../components/cards/cardSale.astro";
 ---
 
 <Layout>
@@ -82,8 +83,159 @@ import Layout from "./layout.astro";
       </ul>
     </div>
   </section>
+  <section class="menuCatalog">
+    <div class="container">
+      <div class="menu">
+        <ul>
+          <li><a href="" class="menuBtnActive">SALE</a></li>
+          <li><a href="">POPULAR</a></li>
+          <li><a href="">NEW</a></li>
+        </ul>
+      </div>
+      <div class="results">
+        <ul>
+          <li>
+            <Card />
+          </li>
+          <li>
+            <Card />
+          </li>
+          <li>
+            <Card />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="CHARACTERS">
+    <h2>CHARACTERS</h2>
+    <div class="heros">
+      <div class="barLeft"></div>
+      <div class="character"></div>
+      <div class="barRiht"></div>
+    </div>
+  </section>
 </Layout>
 <style>
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+  .heros {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 1152px;
+    padding-top: 60px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 1152px;
+    padding-top: 60px;
+  }
+  .character {
+    display: inline-block;
+    width: 799px;
+    height: 563px;
+    border-radius: 30px;
+    background-color: gray;
+    margin-left: 62px;
+    margin-right: 62px;
+  }
+
+  .CHARACTERS {
+    margin-top: 137px;
+    margin-bottom: 142px;
+  }
+  h2 {
+    color: #000;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 99px;
+  }
+  .menuCatalog {
+    background: rgba(226, 219, 240, 0.62);
+  }
+  .barLeft {
+    width: 120px;
+    height: 576px;
+    border-radius: 30px;
+    background: #e2dbf0;
+  }
+  .barRiht {
+    width: 120px;
+    height: 576px;
+    border-radius: 30px;
+    background: #e2dbf0;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: #fff;
+    width: 664px;
+    height: 70px;
+    margin-bottom: 61px;
+  }
+  .menuBtnActive {
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: #e2dbf0;
+    background-color:;
+    padding: 10px 34px;
+  }
+  .results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 30px 0px 0px;
+
+    width: 871px;
+    height: 481px;
+    background-color: #fff;
+  }
+  .results div {
+    width: 227px;
+    height: 374px;
+    border-radius: 20px;
+    background: #e2dbf0;
+  }
+  a {
+    color: #000;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    text-decoration: none;
+  }
+  a:hover {
+    color: #8c5ee7;
+  }
+  .menuBtnActive:hover {
+    color: #fff;
+  }
+
+  ul {
+    gap: 59px;
+    list-style: none;
+    display: flex;
+  }
+
   h1 {
     z-index: 10;
     text-align: center;
@@ -133,20 +285,20 @@ import Layout from "./layout.astro";
     bottom: -90px;
   }
   .hero-top > ul {
-    padding-left: 15px;
+    padding-left: 30px;
     animation: 30s slideRight infinite linear;
     white-space: nowrap;
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 30px;
   }
   .hero-bottom > ul {
-    padding-left: 15px;
+    padding-left: 30px;
     animation: 30s slideLeft infinite linear;
     white-space: nowrap;
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 30px;
   }
   img {
     display: block;
