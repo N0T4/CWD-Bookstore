@@ -105,7 +105,37 @@ import Card from "../components/cards/cardSale.astro";
     <h2>CHARACTERS</h2>
     <div class="heros">
       <div class="barLeft"></div>
-      <div class="character"></div>
+      <div class="character">
+        <div class="characterImg">
+          <img src="./CHARACTERS/gojo.webp" alt="" />
+        </div>
+        <div class="characterInfo">
+          <h3>SATORU GOJO</h3>
+          <img src="./grades/Special.webp" alt="" />
+          <ul class="infoList">
+            <li>
+              <span class="itemType"
+                >Gender:<span class="itemValue">Male</span></span
+              >
+            </li>
+            <li>
+              <span class="itemType"
+                >Height:<span class="itemValue">over 190</span></span
+              >
+            </li>
+            <li>
+              <span class="itemType"
+                >Grade:<span class="itemValue">Special Grade</span></span
+              >
+            </li>
+            <li>
+              <span class="itemType"
+                >Birthday:<span class="itemValue">December 7, 1989</span></span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="barRiht"></div>
     </div>
   </section>
@@ -134,13 +164,99 @@ import Card from "../components/cards/cardSale.astro";
     padding-top: 60px;
   }
   .character {
-    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 799px;
     height: 563px;
     border-radius: 30px;
-    background-color: gray;
+    background-color: #b1d4ef;
     margin-left: 62px;
     margin-right: 62px;
+  }
+  .character::after {
+    content: "";
+    background-image: url(./character_bg-1.png);
+    width: 792px;
+    height: 563px;
+    border-radius: 30px;
+    position: absolute;
+  }
+  .character::before {
+    content: "";
+    background-image: url(./character_bg-2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 792px;
+    height: 445px;
+    top: 118px;
+
+    position: absolute;
+
+    z-index: 101;
+  }
+
+  h3 {
+    z-index: 100;
+    color: #000;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .characterImg {
+    z-index: 100;
+    position: relative;
+  }
+
+  .characterImg > img {
+    position: absolute;
+    width: 509px;
+    height: 536px;
+
+    top: -236px;
+    left: -60px;
+
+    opacity: 1;
+    border: none;
+  }
+  .characterInfo > img {
+    z-index: 100;
+    width: 239px;
+    height: 239px;
+    opacity: 1;
+    border: none;
+  }
+  .characterInfo {
+    box-sizing: border-box;
+    margin-left: 300px;
+    z-index: 101;
+  }
+  .infoList {
+    display: flex;
+    flex-direction: column;
+    height: 163px;
+    gap: 13px;
+  }
+  .itemType {
+    color: #8c5ee7;
+    font-family: Abel;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .itemValue {
+    color: #000;
+    font-family: Abel;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .CHARACTERS {
