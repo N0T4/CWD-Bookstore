@@ -164,6 +164,7 @@ import Card from "../components/cards/cardSale.astro";
     padding-top: 60px;
   }
   .character {
+    position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
@@ -178,6 +179,23 @@ import Card from "../components/cards/cardSale.astro";
   .character::after {
     content: "";
     background-image: url(./character_bg-1.png);
+    width: 792px;
+    height: 563px;
+    border-radius: 30px;
+    position: absolute;
+  }
+  .character::before {
+    content: "";
+    background-image: url(./character_bg-2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 792px;
+    height: 445px;
+    top: 118px;
+
+    position: absolute;
+
+    z-index: 101;
   }
 
   h3 {
@@ -201,7 +219,7 @@ import Card from "../components/cards/cardSale.astro";
     height: 536px;
 
     top: -236px;
-    left: -173px;
+    left: -60px;
 
     opacity: 1;
     border: none;
@@ -214,7 +232,9 @@ import Card from "../components/cards/cardSale.astro";
     border: none;
   }
   .characterInfo {
-    z-index: 100;
+    box-sizing: border-box;
+    margin-left: 300px;
+    z-index: 101;
   }
   .infoList {
     display: flex;
