@@ -1,4 +1,4 @@
-const MANGA = [
+ export const MANGA = [
     {
         volume: "1",
         price: "12.40€",
