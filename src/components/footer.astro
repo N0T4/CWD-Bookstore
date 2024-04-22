@@ -5,22 +5,24 @@
 <footer>
   <div class="container">
     <div class="logo">
-      <img src="./jujutsu_logo.webp" alt="Logo" />
+      <img src="../jujutsu_logo.webp" alt="Logo" />
       <span>JK</span>
     </div>
     <ul class="bottomNav">
-      <li><a href="/about-team.html">ABOUT TEAM</a></li>
-      <li><a href="/contact-us.html">CONTACT US</a></li>
+      <li><a href="/about-team.html" class="Team">ABOUT TEAM</a></li>
+      <li><a href="/contact-us.html" class="contact">CONTACT US</a></li>
     </ul>
     <div class="social">
       <ul>
         <li>
           <a href="index.html"
-            ><img src="" alt="Instagram" class="socialBtn" /></a>
+            ><img src="" alt="Instagram" class="socialBtn" /></a
+          >
         </li>
         <li>
           <a href="index.html"
-            ><img src="" alt="Facebook" class="socialBtn" /></a>
+            ><img src="" alt="Facebook" class="socialBtn" /></a
+          >
         </li>
         <li>
           <a href="index.html"><img src="" alt="LinkIN" class="socialBtn" /></a>
@@ -29,7 +31,32 @@
     </div>
   </div>
 </footer>
+<script>
+  const currentPageURL = window.location.href;
+
+  console.log(currentPageURL);
+  const Team = document.getElementsByClassName("Team")[0];
+  const contact = document.getElementsByClassName("contact")[0];
+
+  if (currentPageURL.includes("/about-team/")) {
+    Team.classList.add("active");
+  }
+  if (currentPageURL.includes("/contact-us/")) {
+    contact.classList.add("active");
+  }
+</script>
 <style>
+  .active {
+    color: #8c5ee7;
+  }
+  .active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+
+    background: #8c5ee7;
+  }
   .logo {
     display: flex;
     gap: 5px;

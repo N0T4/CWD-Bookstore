@@ -9,16 +9,50 @@
   </div>
   <nav>
     <ul>
-      <li><a href="/index.html" class="active">Home</a></li>
-      <li><a href="/catalog.html">Catalog</a></li>
-      <li><a href="/location.html">Location</a></li>
-      <li><a href="/about.html">About</a></li>
+      <li><a href="/index.html" class="home">Home</a></li>
+      <li><a href="/catalog/" class="catalog">Catalog</a></li>
+      <li><a href="/location/" class="location">Location</a></li>
+      <li><a href="/about/" class="about">About</a></li>
     </ul>
   </nav>
-  <div class="profBtn">
-    <a href="profile.html">Profile</a>
+  <div class="profBtn prof">
+    <a href="/profile/">Profile</a>
   </div>
 </header>
+<script>
+  const currentPageURL = window.location.href;
+  const links = document.querySelectorAll("a");
+
+  links.forEach((link) => {
+    link.classList.remove("active");
+  });
+
+  const home = document.getElementsByClassName("home")[0];
+  const catalog = document.getElementsByClassName("catalog")[0];
+  const location = document.getElementsByClassName("location")[0];
+  const about = document.getElementsByClassName("about")[0];
+  const profile = document.getElementsByClassName("prof")[0];
+
+  if (currentPageURL.includes("/catalog/")) {
+    catalog.classList.add("active");
+    home.classList.remove("active");
+  }
+  if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
+    home.classList.add("active");
+  } else if (currentPageURL.includes("/location/")) {
+    location.classList.add("active");
+    home.classList.remove("active");
+  }
+  if (currentPageURL.includes("/about/")) {
+    about.classList.add("active");
+    home.classList.remove("active");
+  }
+  if (currentPageURL.includes("/profile/")) {
+    profile.classList.remove("profBtn");
+    profile.classList.add("activeBtn");
+    home.classList.remove("active");
+  }
+</script>
 
 <style>
   .logo {
@@ -90,6 +124,29 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+  }
+  .activeBtn > a {
+    box-sizing: border-box;
+
+    padding: 4px 18px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #8c5ee7;
+  }
+  .activeBtn::after {
+    content: "";
+    display: block;
+
+    position: absolute;
+    bottom: -4px;
+    right: 115px;
+    width: 1px;
+    height: 30px;
+
+    background: #8c5ee7;
+  }
+  .activeBtn {
+    position: relative;
   }
   .profBtn {
     position: relative;
