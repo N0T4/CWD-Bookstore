@@ -38,8 +38,7 @@
   }
   if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
     home.classList.add("active");
-  }
-  if (currentPageURL.includes("/location/")) {
+  } else if (currentPageURL.includes("/location/")) {
     location.classList.add("active");
   }
   if (currentPageURL.includes("/about/")) {
