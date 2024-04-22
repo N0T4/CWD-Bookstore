@@ -1,26 +1,60 @@
 ---
-import { MANGA } from "./MANGA.js";
+
 ---
 
-<div>
+<div class="manga" data-index="0">
   <img src="./MANGA/8.jpg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
 
-<div>
+<div class="manga" data-index="1">
   <img src="./MANGA/8.jpg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
 
-<div>
+<div class="manga" data-index="3">
   <img src="./MANGA/8.jpg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
 
-<script></script>
+<script>
+  import { MANGA } from "./MANGA.js";
+
+  var saleMangaList = [];
+  function findSaleManga() {
+    for (let i = 0; i < MANGA.length; i++) {
+      if (MANGA[i].newPrice && MANGA[i].newPrice === "8.99€") {
+        saleMangaList.push(MANGA[i]);
+      }
+    }
+    console.log(saleMangaList);
+  }
+
+  function changeValue(saleMangaList) {
+    const mangaDivs = document.querySelectorAll(".manga");
+
+    saleMangaList.forEach((manga, index) => {
+      const mangaDiv = mangaDivs[index];
+      const img = mangaDiv.querySelector("img");
+      const prevPriceSpan = mangaDiv.querySelector(".prevPrice");
+      const priceSpan = mangaDiv.querySelector(".price");
+
+      img.src = manga.image;
+      prevPriceSpan.textContent = manga.price;
+      priceSpan.textContent = manga.newPrice;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    findSaleManga();
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    changeValue(saleMangaList);
+  });
+</script>
 
 <style>
   * {
