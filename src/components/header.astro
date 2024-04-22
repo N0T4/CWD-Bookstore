@@ -35,18 +35,22 @@
 
   if (currentPageURL.includes("/catalog/")) {
     catalog.classList.add("active");
+    home.classList.remove("active");
   }
   if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
     home.classList.add("active");
   } else if (currentPageURL.includes("/location/")) {
     location.classList.add("active");
+    home.classList.remove("active");
   }
   if (currentPageURL.includes("/about/")) {
     about.classList.add("active");
+    home.classList.remove("active");
   }
   if (currentPageURL.includes("/profile/")) {
     profile.classList.remove("profBtn");
     profile.classList.add("activeBtn");
+    home.classList.remove("active");
   }
 </script>
 
