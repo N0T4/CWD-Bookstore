@@ -9,7 +9,7 @@
   </div>
   <nav>
     <ul>
-      <li><a href="/index.html" class="home">Home</a></li>
+      <li><a href="/" class="home">Home</a></li>
       <li><a href="/catalog/" class="catalog">Catalog</a></li>
       <li><a href="/location/" class="location">Location</a></li>
       <li><a href="/about/" class="about">About</a></li>
@@ -33,7 +33,7 @@
   const about = document.getElementsByClassName("about")[0];
   const profile = document.getElementsByClassName("prof")[0];
 
-  if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
+  if (currentPageURL.includes("/")) {
     home.classList.add("active");
   }
   if (currentPageURL.includes("/catalog/")) {
@@ -51,6 +51,13 @@
   if (currentPageURL.includes("/profile/")) {
     profile.classList.remove("profBtn");
     profile.classList.add("activeBtn");
+    home.classList.remove("active");
+  }
+
+  if (currentPageURL.includes("/about-team/")) {
+    home.classList.remove("active");
+  }
+  if (currentPageURL.includes("/contact-us/")) {
     home.classList.remove("active");
   }
 </script>
