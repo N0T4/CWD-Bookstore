@@ -33,13 +33,14 @@
   const about = document.getElementsByClassName("about")[0];
   const profile = document.getElementsByClassName("prof")[0];
 
+  if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
+    home.classList.add("active");
+  }
   if (currentPageURL.includes("/catalog/")) {
     catalog.classList.add("active");
     home.classList.remove("active");
   }
-  if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
-    home.classList.add("active");
-  } else if (currentPageURL.includes("/location/")) {
+  if (currentPageURL.includes("/location/")) {
     location.classList.add("active");
     home.classList.remove("active");
   }
