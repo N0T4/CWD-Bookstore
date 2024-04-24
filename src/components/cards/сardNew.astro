@@ -2,31 +2,28 @@
 
 ---
 
-<div class="cardSecSale">
-  <div class="mangaSale" data-index="0">
+<div class="cardSecNew hidden">
+  <div class="manga" data-index="0">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
-    <span class="price">8.59€</span>
   </div>
 
-  <div class="mangaSale" data-index="1">
+  <div class="manga" data-index="1">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
-    <span class="price">8.59€</span>
   </div>
 
-  <div class="mangaSale" data-index="3">
+  <div class="manga" data-index="3">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
-    <span class="price">8.59€</span>
   </div>
 
-  <div class="overlay" id="overlay">
-    <div class="modalWindow">
-      <button type="button" class="closeBtn" id="closeBtn">close</button>
+  <div class="overlayNew" id="overlayNew">
+    <div class="modalWindowNew">
+      <button type="button" class="closeBtn" id="closeBtnNew">close</button>
       <img src="./MANGA/8.jpg" class="modalImg" />
-      <span class="price">8.99€</span>
-      <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+      <span class="prevPrice">8.99€</span>
+      <button type="button" class="buyBtn" id="buyBtnNew">BUY</button>
     </div>
   </div>
 </div>
@@ -34,32 +31,31 @@
 <script>
   import { MANGA } from "./MANGA.js";
 
-  const modalWindow = document.getElementById("overlay");
-  const closeBtn = document.getElementById("closeBtn");
-  const buyBtn = document.getElementById("buyBtn");
+  const modalWindow = document.getElementById("overlayNew");
+  const closeBtn = document.getElementById("closeBtnNew");
+  const buyBtn = document.getElementById("buyBtnNew");
 
   var saleMangaList = [];
-  function findSaleManga() {
-    for (let i = 0; i < MANGA.length; i++) {
-      if (MANGA[i].newPrice && MANGA[i].newPrice === "8.99€") {
-        saleMangaList.push(MANGA[i]);
-      }
+  function addNewManga() {
+    if (MANGA.length >= 3) {
+      saleMangaList.push(MANGA[MANGA.length - 3]);
+      saleMangaList.push(MANGA[MANGA.length - 2]);
+      saleMangaList.push(MANGA[MANGA.length - 1]);
+    } else {
+      console.log("Error: Array MANGA contains less than three elements.");
     }
-    console.log(saleMangaList);
   }
 
   function changeValue(saleMangaList) {
-    const mangaDivs = document.querySelectorAll(".mangaSale");
+    const mangaDivs = document.querySelectorAll(".manga");
 
     saleMangaList.forEach((manga, index) => {
       const mangaDiv = mangaDivs[index];
       const img = mangaDiv.querySelector("img");
       const prevPriceSpan = mangaDiv.querySelector(".prevPrice");
-      const priceSpan = mangaDiv.querySelector(".price");
 
       img.src = manga.image;
       prevPriceSpan.textContent = manga.price;
-      priceSpan.textContent = manga.newPrice;
     });
   }
 
@@ -90,7 +86,7 @@
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-    findSaleManga();
+    addNewManga();
   });
   document.addEventListener("DOMContentLoaded", function () {
     changeValue(saleMangaList);
@@ -102,14 +98,14 @@
     margin: 0px;
     padding: 0px;
   }
-  .cardSecSale {
-    display: flex;
-    gap: 40px;
-  }
   .hidden {
     display: none !important;
   }
-  .overlay {
+  .cardSecNew {
+    display: flex;
+    gap: 40px;
+  }
+  .overlayNew {
     display: none;
     z-index: 110;
     overflow: auto;
@@ -123,7 +119,7 @@
     top: 0;
     background-color: #00000036;
   }
-  .modalWindow {
+  .modalWindowNew {
     position: relative;
     padding: 20px;
 
@@ -182,7 +178,7 @@
     color: #9a79db;
     background-color: #fff;
   }
-  .mangaSale {
+  .manga {
     cursor: pointer;
 
     position: relative;
@@ -197,12 +193,12 @@
     background: #e2dbf0;
   }
 
-  .mangaSale::after {
+  .manga::after {
     position: absolute;
     top: -15px;
     right: -24px;
 
-    content: "SALE";
+    content: "NEW";
     display: inline-block;
     width: 83px;
     height: 32px;
@@ -235,33 +231,6 @@
     line-height: normal;
   }
   .prevPrice {
-    position: absolute;
-    left: 50%;
-    top: 270px;
-    transform: translateX(-50%);
-
-    margin: 0px;
-    color: #fff;
-    text-align: center;
-    font-family: Mali;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: #fff;
-  }
-  .prevPrice::after {
-    position: absolute;
-    left: 0px;
-    top: 15px;
-    content: "";
-    display: inline-block;
-    width: 70px;
-    height: 2px;
-    transform: rotate(-12.529deg);
-    background: #fff;
-  }
-  .price {
     text-align: center;
     font-family: Mali;
     font-size: 42px;

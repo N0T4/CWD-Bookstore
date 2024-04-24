@@ -1,6 +1,8 @@
 ---
 import Layout from "./layout.astro";
 import Card from "../components/cards/cardSale.astro";
+import ArdNew from "../components/cards/сardNew.astro";
+import CardPopular from "../components/cards/cardPopular.astro";
 ---
 
 <Layout>
@@ -87,15 +89,17 @@ import Card from "../components/cards/cardSale.astro";
     <div class="container">
       <div class="menu">
         <ul>
-          <li><a href="" class="menuBtnActive">SALE</a></li>
-          <li><a href="" class="menuBtn">POPULAR</a></li>
-          <li><a href="" class="menuBtn">NEW</a></li>
+          <li><a href="" class="menuBtnActive" id="Sale">SALE</a></li>
+          <li><a href="" class="menuBtn" id="Popular">POPULAR</a></li>
+          <li><a href="" class="menuBtn" id="New">NEW</a></li>
         </ul>
       </div>
-      <div class="results">
+      <div class="results" id="results">
         <ul>
           <li>
             <Card />
+            <ArdNew />
+            <CardPopular />
           </li>
         </ul>
       </div>
@@ -140,12 +144,78 @@ import Card from "../components/cards/cardSale.astro";
     </div>
   </section>
 </Layout>
+<script>
+  const sale = document.getElementById("Sale");
+  const popular = document.getElementById("Popular");
+  const New = document.getElementById("New");
+
+  var cardSecSale = document.querySelector(".cardSecSale");
+  var cardSecNew = document.querySelector(".cardSecNew");
+  var cardSecPopular = document.querySelector(".cardSecPopular");
+
+  function showSaleCards() {
+    sale.classList.remove("menuBtn");
+    sale.classList.add("menuBtnActive");
+
+    popular.classList.remove("menuBtnActive");
+    popular.classList.add("menuBtn");
+    New.classList.remove("menuBtnActive");
+    New.classList.add("menuBtn");
+
+    cardSecSale.classList.remove("hidden");
+    cardSecNew.classList.add("hidden");
+    cardSecPopular.classList.add("hidden");
+  }
+
+  function showPopularCards() {
+    popular.classList.remove("menuBtn");
+    popular.classList.add("menuBtnActive");
+
+    sale.classList.remove("menuBtnActive");
+    sale.classList.add("menuBtn");
+    New.classList.remove("menuBtnActive");
+    New.classList.add("menuBtn");
+
+    cardSecPopular.classList.remove("hidden");
+    cardSecNew.classList.add("hidden");
+    cardSecSale.classList.add("hidden");
+  }
+
+  function showNewCards() {
+    New.classList.remove("menuBtn");
+    New.classList.add("menuBtnActive");
+
+    sale.classList.remove("menuBtnActive");
+    sale.classList.add("menuBtn");
+    popular.classList.remove("menuBtnActive");
+    popular.classList.add("menuBtn");
+
+    cardSecSale.classList.add("hidden");
+    cardSecNew.classList.remove("hidden");
+    cardSecPopular.classList.add("hidden");
+  }
+
+  sale.addEventListener("click", function (event) {
+    event.preventDefault();
+    showSaleCards();
+  });
+  popular.addEventListener("click", function (event) {
+    event.preventDefault();
+    showPopularCards();
+  });
+  New.addEventListener("click", function (event) {
+    event.preventDefault();
+    showNewCards();
+  });
+</script>
 <style>
   * {
     margin: 0px;
     padding: 0px;
   }
-
+  .hidden {
+    display: none !important;
+  }
   .heros {
     display: flex;
     flex-direction: row;
@@ -304,14 +374,12 @@ import Card from "../components/cards/cardSale.astro";
     box-sizing: border-box;
     border-radius: 30px;
     background: #e2dbf0;
-    background-color:;
     padding: 10px 34px;
   }
 
   .menuBtn {
     box-sizing: border-box;
     border-radius: 30px;
-
     padding: 10px 34px;
   }
   .results {
