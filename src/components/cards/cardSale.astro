@@ -20,8 +20,20 @@
   <span class="price">8.59€</span>
 </div>
 
+<div class="overlay" id="overlay">
+  <div class="modalWindow">
+    <button type="button" class="closeBtn" id="closeBtn">close</button>
+    <img src="./MANGA/8.jpg" />
+    <span class="price">8.59€</span>
+    <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+  </div>
+</div>
 <script>
   import { MANGA } from "./MANGA.js";
+
+  const modalWindow = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+  const buyBtn = document.getElementById("buyBtn");
 
   var saleMangaList = [];
   function findSaleManga() {
@@ -48,6 +60,27 @@
     });
   }
 
+  function openModalWindow() {
+    modalWindow.style.display = "flex";
+  }
+  function closeModalWindow() {
+    modalWindow.style.display = "none";
+  }
+  const elementsWithIndex = document.querySelectorAll("[data-index]");
+
+  elementsWithIndex.forEach(function (element) {
+    element.addEventListener("click", function (event) {
+      openModalWindow();
+    });
+  });
+
+  closeBtn.addEventListener("click", function (event) {
+    closeModalWindow();
+  });
+  buyBtn.addEventListener("click", function (event) {
+    closeModalWindow();
+  });
+
   document.addEventListener("DOMContentLoaded", function () {
     findSaleManga();
   });
@@ -61,7 +94,80 @@
     margin: 0px;
     padding: 0px;
   }
-  div {
+  .overlay {
+    display: none;
+    z-index: 110;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+    background-color: #00000036;
+  }
+  .modalWindow {
+    position: relative;
+    padding: 20px;
+
+    width: 350px;
+    height: 450px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #e2dbf0;
+    border-radius: 20px;
+    border: 10px solid white;
+    box-sizing: border-box;
+  }
+  .buyBtn {
+    margin-top: 15px;
+    width: 100px;
+    height: 50px;
+    background-color: #8c5ee7;
+    border: none;
+    border-radius: 20px;
+
+    color: #fff;
+    text-align: center;
+    font-family: "Maven Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.25s;
+  }
+  .closeBtn {
+    top: 20px;
+    left: 15px;
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background-color: #8c5ee7;
+    border: none;
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    color: #654d94;
+    text-align: center;
+    font-family: "Maven Pro";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.25s;
+  }
+  .buyBtn:hover,
+  .closeBtn:hover {
+    color: #9a79db;
+    background-color: #fff;
+  }
+  .manga {
     cursor: pointer;
 
     position: relative;
@@ -76,7 +182,7 @@
     background: #e2dbf0;
   }
 
-  div::after {
+  .manga::after {
     position: absolute;
     top: -15px;
     right: -24px;
