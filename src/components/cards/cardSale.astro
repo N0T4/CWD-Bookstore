@@ -3,19 +3,19 @@
 ---
 
 <div class="manga" data-index="0">
-  <img src="./MANGA/8.jpg" />
+  <img src="./MANGA/8.jpg" class="mangaImg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
 
 <div class="manga" data-index="1">
-  <img src="./MANGA/8.jpg" />
+  <img src="./MANGA/8.jpg" class="mangaImg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
 
 <div class="manga" data-index="3">
-  <img src="./MANGA/8.jpg" />
+  <img src="./MANGA/8.jpg" class="mangaImg" />
   <span class="prevPrice">9.99€</span>
   <span class="price">8.59€</span>
 </div>
@@ -23,8 +23,8 @@
 <div class="overlay" id="overlay">
   <div class="modalWindow">
     <button type="button" class="closeBtn" id="closeBtn">close</button>
-    <img src="./MANGA/8.jpg" />
-    <span class="price">8.59€</span>
+    <img src="./MANGA/8.jpg" class="modalImg" />
+    <span class="price">8.99€</span>
     <button type="button" class="buyBtn" id="buyBtn">BUY</button>
   </div>
 </div>
@@ -63,14 +63,23 @@
   function openModalWindow() {
     modalWindow.style.display = "flex";
   }
+
   function closeModalWindow() {
     modalWindow.style.display = "none";
   }
   const elementsWithIndex = document.querySelectorAll("[data-index]");
 
   elementsWithIndex.forEach(function (element) {
-    element.addEventListener("click", function (event) {
+    element.addEventListener("click", function () {
       openModalWindow();
+      const modalImg = modalWindow.querySelector(".modalImg");
+      const mangaDiv = this.querySelector(".mangaImg");
+      const imgSrc = mangaDiv.src;
+      modalImg.src = imgSrc;
+
+      console.log(imgSrc);
+      console.log(mangaDiv);
+      console.log(modalImg);
     });
   });
 
