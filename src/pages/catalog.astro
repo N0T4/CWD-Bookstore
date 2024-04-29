@@ -2,4 +2,150 @@
 import Layout from "./layout.astro";
 ---
 
-<Layout />
+<Layout>
+  <section>
+    <div class="container">
+      <div class="catalog">
+        <ul class="ulCatalog">
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+          <li>
+            <div class="manga" data-index="0">
+              <img src="/MANGA/8.jpg" class="mangaImg" />
+              <span class="price">8.59€</span>
+              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+<script></script>
+<style>
+  .ulCatalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 42px;
+    list-style: none;
+  }
+  .container {
+    padding: 114px;
+    margin: 0 auto;
+    width: 1152px;
+  }
+  .catalog {
+    padding: 20px;
+    margin: 0 auto;
+    width: 842px;
+
+    border-radius: 20px;
+    background: rgba(226, 219, 240, 0.5);
+  }
+  .manga {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 227px;
+    height: 374px;
+    border-radius: 20px;
+    background: white;
+    border: 3px solid rgba(226, 219, 240, 0.5);
+    transition: all 0.3s;
+  }
+  .manga:hover {
+    border: 3px solid #8c5ee7;
+  }
+  img {
+    margin: 0 auto;
+    width: 152px;
+    height: 239px;
+    flex-shrink: 0;
+    border: 3px solid #0f0b18;
+  }
+  span {
+    color: #000;
+    text-align: center;
+    font-family: Mali;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .prevPrice {
+    position: absolute;
+    left: 50%;
+    top: 270px;
+    transform: translateX(-50%);
+
+    margin: 0px;
+    color: #fff;
+    text-align: center;
+    font-family: Mali;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #fff;
+  }
+  .buyBtn {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 80px;
+    height: 30px;
+    background-color: rgba(226, 219, 240, 0.5);
+    border: none;
+    border-radius: 20px;
+
+    color: #000;
+    text-align: center;
+    font-family: "Maven Pro";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 0.25s;
+  }
+  .buyBtn:hover {
+    color: #fff;
+    background-color: #8c5ee7;
+  }
+</style>
