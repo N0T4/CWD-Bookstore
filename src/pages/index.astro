@@ -95,52 +95,73 @@ import CardPopular from "../components/cards/cardPopular.astro";
         </ul>
       </div>
       <div class="results" id="results">
-        <ul>
-          <li>
-            <Card />
-            <ArdNew />
-            <CardPopular />
-          </li>
-        </ul>
+        <Card />
+        <ArdNew />
+        <CardPopular />
       </div>
     </div>
   </section>
   <section class="CHARACTERS">
     <h2>CHARACTERS</h2>
-    <div class="heros">
-      <div class="barLeft"></div>
-      <div class="character">
-        <div class="characterImg">
-          <img src="./CHARACTERS/gojo.webp" alt="" />
-        </div>
-        <div class="characterInfo">
-          <h3>SATORU GOJO</h3>
-          <img src="./grades/Special.webp" alt="" />
-          <ul class="infoList">
-            <li>
-              <span class="itemType"
-                >Gender:<span class="itemValue">Male</span></span
-              >
-            </li>
-            <li>
-              <span class="itemType"
-                >Height:<span class="itemValue">over 190</span></span
-              >
-            </li>
-            <li>
-              <span class="itemType"
-                >Grade:<span class="itemValue">Special Grade</span></span
-              >
-            </li>
-            <li>
-              <span class="itemType"
-                >Birthday:<span class="itemValue">December 7, 1989</span></span
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="barRiht"></div>
+    <div class="people">
+      <ul class="peopleUl">
+        <li class="peopleLi geto">
+          <img src="./CHARACTERS/geto.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>SUGURU GETO</span>
+          </div>
+        </li>
+        <li class="peopleLi gojo">
+          <img src="./CHARACTERS/gojo.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>SATORU GOJO</span>
+          </div>
+        </li>
+        <li class="peopleLi kento">
+          <img src="./CHARACTERS/kento.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>KENTO NANAMI</span>
+          </div>
+        </li>
+        <li class="peopleLi megumi">
+          <img src="./CHARACTERS/megumi.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>MEGUMI FUSHIGURO</span>
+          </div>
+        </li>
+        <li class="peopleLi nobara">
+          <img src="./CHARACTERS/nobara.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>NOBARA KUGISAKI</span>
+          </div>
+        </li>
+        <li class="peopleLi panda">
+          <img src="./CHARACTERS/panda.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>PANDA</span>
+          </div>
+        </li>
+        <li class="peopleLi toge">
+          <img src="./CHARACTERS/toge.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>TOGE INUMAKI</span>
+          </div>
+        </li>
+        <li class="peopleLi yuji">
+          <img src="./CHARACTERS/yuji.webp" alt="" class="peopleImg" />
+          <div class="peopleText">
+            <img src="./grades/Special.webp" alt="" class="peopleTextImg" />
+            <span>YUJI ITADORI</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 </Layout>
@@ -216,15 +237,108 @@ import CardPopular from "../components/cards/cardPopular.astro";
   .hidden {
     display: none !important;
   }
-  .heros {
-    display: flex;
-    flex-direction: row;
+  .peopleText {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 100px;
+    transform: translateX(-250px);
+
+    z-index: 100;
+    color: black;
+    width: 350px;
+    height: 250px;
+  }
+  .peopleText > span {
+    color: #000;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .people {
+    width: 100%;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    width: 1152px;
-    padding-top: 60px;
   }
+  .peopleUl {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    gap: 0px;
+    margin-bottom: 103px;
+    transition: all 0.4s;
+  }
+  .peopleUl:hover {
+    width: 1152px;
+  }
+  .peopleLi {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid white;
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    transition: all 0.4s;
+  }
+  .peopleLi:hover {
+    width: 380px;
+  }
+  .peopleLi:hover > .peopleImg {
+    filter: grayscale(0%);
+    width: 380px;
+  }
+  .peopleLi:hover {
+    width: 380px;
+  }
+
+  .peopleImg {
+    filter: grayscale(100%);
+    border: none;
+    opacity: 1;
+    transform: translateX(-140px);
+    margin: 0 auto;
+    width: 380px;
+    height: 450px;
+    transition: all 0.4s;
+  }
+  .peopleTextImg {
+    width: 150px;
+    height: 150px;
+    border: none;
+    opacity: 1;
+  }
+  .geto {
+    background-color: #9b8ab4;
+  }
+
+  .gojo {
+    background-color: #b1d4ef;
+  }
+  .kento {
+    background-color: #fe8a38;
+  }
+  .megumi {
+    background-color: #89d2d1;
+  }
+  .nobara {
+    background-color: #dd4657;
+  }
+  .panda {
+    background-color: #ccc6f3;
+  }
+  .toge {
+    background-color: #80d69d;
+  }
+  .yuji {
+    background-color: #c05576;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -234,106 +348,7 @@ import CardPopular from "../components/cards/cardPopular.astro";
     width: 1152px;
     padding-top: 60px;
   }
-  .character {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 799px;
-    height: 563px;
-    border-radius: 30px;
-    background-color: #b1d4ef;
-    margin-left: 62px;
-    margin-right: 62px;
-  }
-  .character::after {
-    content: "";
-    background-image: url(./character_bg-1.png);
-    width: 792px;
-    height: 563px;
-    border-radius: 30px;
-    position: absolute;
-  }
-  .character::before {
-    content: "";
-    background-image: url(./character_bg-2.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 792px;
-    height: 445px;
-    top: 118px;
 
-    position: absolute;
-
-    z-index: 101;
-  }
-
-  h3 {
-    z-index: 100;
-    color: #000;
-    text-align: center;
-    font-family: "Libre Barcode 39 Extended Text";
-    font-size: 45px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  .characterImg {
-    z-index: 100;
-    position: relative;
-  }
-
-  .characterImg > img {
-    position: absolute;
-    width: 509px;
-    height: 536px;
-
-    top: -236px;
-    left: -60px;
-
-    opacity: 1;
-    border: none;
-  }
-  .characterInfo > img {
-    z-index: 100;
-    width: 239px;
-    height: 239px;
-    opacity: 1;
-    border: none;
-  }
-  .characterInfo {
-    box-sizing: border-box;
-    margin-left: 300px;
-    z-index: 101;
-  }
-  .infoList {
-    display: flex;
-    flex-direction: column;
-    height: 163px;
-    gap: 13px;
-  }
-  .itemType {
-    color: #8c5ee7;
-    font-family: Abel;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  .itemValue {
-    color: #000;
-    font-family: Abel;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-
-  .CHARACTERS {
-    margin-top: 137px;
-    margin-bottom: 142px;
-  }
   h2 {
     color: #000;
     text-align: center;
@@ -342,22 +357,11 @@ import CardPopular from "../components/cards/cardPopular.astro";
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-bottom: 99px;
+    margin-top: 90px;
+    margin-bottom: 90px;
   }
   .menuCatalog {
     background: rgba(226, 219, 240, 0.62);
-  }
-  .barLeft {
-    width: 120px;
-    height: 576px;
-    border-radius: 30px;
-    background: #e2dbf0;
-  }
-  .barRiht {
-    width: 120px;
-    height: 576px;
-    border-radius: 30px;
-    background: #e2dbf0;
   }
 
   .menu {
