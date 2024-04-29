@@ -2,18 +2,18 @@
 
 ---
 
-<div class="cardSecPopular hidden">
-  <div class="mangaPopular" data-index="0">
+<section class="cardSecPopular">
+  <div class="mangaPopular pop" data-index="4">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
   </div>
 
-  <div class="mangaPopular" data-index="1">
+  <div class="mangaPopular pop" data-index="5">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
   </div>
 
-  <div class="mangaPopular" data-index="3">
+  <div class="mangaPopular pop" data-index="6">
     <img src="./MANGA/8.jpg" class="mangaImg" />
     <span class="prevPrice">9.99€</span>
   </div>
@@ -26,7 +26,7 @@
       <button type="button" class="buyBtn" id="buyBtnPop">BUY</button>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   import { MANGA } from "./MANGA.js";
@@ -73,7 +73,10 @@
   }
   const elementsWithIndex = document.querySelectorAll("[data-index]");
 
-  elementsWithIndex.forEach(function (element) {
+  console.log(elementsWithIndex);
+
+  const elementNew = document.getElementsByClassName("pop");
+  Array.from(elementNew).forEach(function (element) {
     element.addEventListener("click", function () {
       openModalWindow();
       const modalImg = modalWindow.querySelector(".modalImg");
