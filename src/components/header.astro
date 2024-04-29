@@ -9,7 +9,7 @@
   </div>
   <nav>
     <ul>
-      <li><a href="/index.html" class="home">Home</a></li>
+      <li><a href="/" class="home">Home</a></li>
       <li><a href="/catalog/" class="catalog">Catalog</a></li>
       <li><a href="/location/" class="location">Location</a></li>
       <li><a href="/about/" class="about">About</a></li>
@@ -33,13 +33,14 @@
   const about = document.getElementsByClassName("about")[0];
   const profile = document.getElementsByClassName("prof")[0];
 
+  if (currentPageURL.includes("/")) {
+    home.classList.add("active");
+  }
   if (currentPageURL.includes("/catalog/")) {
     catalog.classList.add("active");
     home.classList.remove("active");
   }
-  if (currentPageURL.includes("https://cwdbookstore.netlify.app/")) {
-    home.classList.add("active");
-  } else if (currentPageURL.includes("/location/")) {
+  if (currentPageURL.includes("/location/")) {
     location.classList.add("active");
     home.classList.remove("active");
   }
@@ -50,6 +51,13 @@
   if (currentPageURL.includes("/profile/")) {
     profile.classList.remove("profBtn");
     profile.classList.add("activeBtn");
+    home.classList.remove("active");
+  }
+
+  if (currentPageURL.includes("/about-team/")) {
+    home.classList.remove("active");
+  }
+  if (currentPageURL.includes("/contact-us/")) {
     home.classList.remove("active");
   }
 </script>
@@ -77,6 +85,10 @@
     background: #8c5ee7;
   }
   header {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 120;
     border-radius: 0px 0px 20px 20px;
     background: #fff;
     border-right: 1px solid #000;
