@@ -54,7 +54,32 @@ import Layout from "./layout.astro";
     </div>
   </section>
 </Layout>
-<script></script>
+<script>
+  import { MANGA } from "../../public/MANGA.js";
+  const catalog = document.querySelector(".ulCatalog");
+
+  MANGA.forEach((element) => {
+    const li = document.createElement("li");
+    const div = document.createElement("div");
+    const img = document.createElement("img");
+    const span = document.createElement("span");
+    const btn = document.createElement("button");
+    div.classList.add("manga");
+
+    img.classList.add("mangaImg");
+    img.src = element.image;
+    span.classList.add("price");
+    span.textContent = element.price;
+    btn.classList.add("buyBtn");
+
+    catalog.appendChild(li);
+    li.appendChild(div);
+    div.appendChild(img);
+    div.appendChild(span);
+    div.appendChild(btn);
+    console.log(img);
+  });
+</script>
 <style>
   .ulCatalog {
     display: flex;
