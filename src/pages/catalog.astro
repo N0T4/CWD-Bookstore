@@ -1,80 +1,33 @@
 ---
 import Layout from "./layout.astro";
+import { MANGA } from "../../public/MANGA.js";
 ---
 
 <Layout>
   <section>
     <div class="container">
       <div class="catalog">
-        <ul class="ulCatalog">
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
-          <li>
-            <div class="manga" data-index="0">
-              <img src="/MANGA/8.jpg" class="mangaImg" />
-              <span class="price">8.59€</span>
-              <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-            </div>
-          </li>
+        <ul class="ulCatalog" id="catalog">
+          {
+            MANGA.map((manga) => (
+              <li>
+                <div class="manga">
+                  <img src={manga.image} class="mangaImg" />
+                  <span class="price">{manga.price}</span>
+                  <button type="button" class="buyBtn">
+                    BUY
+                  </button>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>
   </section>
+  <script></script>
 </Layout>
-<script>
-  import { MANGA } from "../../public/MANGA.js";
-  const catalog = document.querySelector(".ulCatalog");
 
-  function renderManga(MANGA) {
-    MANGA.forEach((element) => {
-      const catalogBlok = `
-    <li>
-      <div class="manga" data-index="0">
-        <img src="${element.image}" class="mangaImg" />
-        <span class="price">${element.price}</span>
-        <button type="button" class="buyBtn" id="buyBtn">BUY</button>
-      </div>
-    </li>`;
-      catalog.innerHTML += catalogBlok;
-    });
-  }
-  document.addEventListener("DOMContentLoaded", function () {
-    renderManga(MANGA);
-  });
-</script>
 <style>
   .ulCatalog {
     display: flex;
