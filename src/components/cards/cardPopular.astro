@@ -22,7 +22,7 @@
     <div class="modalWindowPop">
       <button type="button" class="closeBtn" id="closeBtnPop">close</button>
       <img src="./MANGA/8.jpg" class="modalImg" />
-      <span class="prevPrice">8.99€</span>
+      <span class="prevPrice">8.90€</span>
       <button type="button" class="buyBtn" id="buyBtnPop">BUY</button>
     </div>
   </div>
@@ -81,6 +81,11 @@
       openModalWindow();
       const modalImg = modalWindow.querySelector(".modalImg");
       const mangaDiv = this.querySelector(".mangaImg");
+
+      const spanMain = this.querySelector(".prevPrice");
+      const spanModal = modalWindow.querySelector(".prevPrice");
+
+      spanModal.textContent = spanMain.textContent;
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -199,6 +204,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .mangaPopular:hover {
+    background: #cdbdee;
   }
 
   .mangaPopular::after {

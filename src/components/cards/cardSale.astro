@@ -77,6 +77,12 @@
       openModalWindow();
       const modalImg = modalWindow.querySelector(".modalImg");
       const mangaDiv = this.querySelector(".mangaImg");
+
+      const spanMain = this.querySelector(".price");
+      const spanModal = modalWindow.querySelector(".price");
+
+      spanModal.textContent = spanMain.textContent;
+
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -195,6 +201,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .mangaSale:hover {
+    background: #cdbdee;
   }
 
   .mangaSale::after {

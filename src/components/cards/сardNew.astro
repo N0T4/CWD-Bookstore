@@ -77,6 +77,12 @@
       openModalWindowNew();
       const modalImg = modalWindow.querySelector(".modalImgNew");
       const mangaDiv = this.querySelector(".mangaImgNew");
+
+      const spanMain = this.querySelector(".prevPrice");
+      const spanModal = modalWindow.querySelector(".prevPrice");
+
+      spanModal.textContent = spanMain.textContent;
+
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -195,6 +201,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .manga:hover {
+    background: #cdbdee;
   }
 
   .manga::after {
