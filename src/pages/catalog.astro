@@ -11,10 +11,11 @@ import { MANGA } from "../../public/MANGA.js";
           {
             MANGA.map((manga) => (
               <li>
-                <div class="manga">
+                <p class="remove">remove</p>
+                <div class="manga ">
                   <img src={manga.image} class="mangaImg" />
                   <span class="price">{manga.price}</span>
-                  <button type="button" class="buyBtn">
+                  <button type="button" class="buyBtnCatalog">
                     BUY
                   </button>
                 </div>
@@ -23,12 +24,164 @@ import { MANGA } from "../../public/MANGA.js";
           }
         </ul>
       </div>
+      <div class="basket">
+        <img src="../../public/basket.svg" />
+        <span class="books">0</span>
+      </div>
+      <div class="basketValue shiftRight">
+        <span> Basket is empty :(</span>
+      </div>
     </div>
   </section>
 </Layout>
-<script></script>
+<script>
+  const buyBtns = document.querySelectorAll(".buyBtnCatalog");
+  const valueBook = document.querySelector(".books");
+  const removeBooks = document.querySelectorAll(".remove");
+
+  const basket = document.querySelector(".basket");
+  const basketValue = document.querySelector(".basketValue");
+
+  console.log(basket);
+  basket.addEventListener("click", () => {
+    basketValue.classList.toggle("shiftRight");
+  });
+
+  var booksNumber = 0;
+
+  buyBtns.forEach((buyBtn) => {
+    buyBtn.addEventListener("click", () => {
+      booksNumber++;
+      valueBook.textContent = booksNumber.toString();
+      console.log(booksNumber);
+
+      const closestManga = buyBtn.closest(".manga");
+      closestManga.classList.add("chosen");
+
+      buyBtn.disabled = true;
+
+      const li = closestManga.closest("li");
+      const remove = li.querySelector(".remove");
+      remove.classList.add("show");
+    });
+  });
+
+  removeBooks.forEach((removeBook) => {
+    removeBook.addEventListener("click", () => {
+      booksNumber--;
+      valueBook.textContent = booksNumber.toString();
+      console.log(booksNumber);
+
+      const li = removeBook.closest("li");
+
+      const closestManga = li.querySelector(".manga");
+      closestManga.classList.remove("chosen");
+
+      const closestBtn = closestManga.querySelector(".buyBtnCatalog");
+      closestBtn.disabled = false;
+
+      const closestRemove = li.querySelector(".remove");
+      closestRemove.classList.remove("show");
+    });
+  });
+</script>
 
 <style>
+  .remove {
+    cursor: pointer;
+    overflow: hidden;
+    width: 0px;
+    height: 30px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background-color: #8c5ee7;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Mali;
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+
+  .show {
+    width: 70px;
+  }
+
+  .chosen {
+    filter: grayscale(1);
+  }
+  .basket {
+    top: 80px;
+    right: 80px;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    background-color: #ccc6f3;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+
+  .basket:hover {
+    background-color: #b6aeea;
+  }
+  .basket:hover,
+  .basket:hover + .basketValue {
+    background-color: #b6aeea;
+  }
+  .basketValue {
+    border-radius: 20px;
+    top: 120px;
+    right: -17px;
+    position: absolute;
+    width: 222px;
+    min-height: 50px;
+    padding: 10px;
+    background-color: #ccc6f3;
+    transition: all 0.2s;
+  }
+  .shiftRight {
+    right: -300px;
+  }
+  .basketValue span {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Mali;
+    font-size: 16px;
+  }
+  .books {
+    content: "1";
+    top: -7px;
+    right: -7px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #8c5ee7;
+    position: absolute;
+
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Mali;
+    font-size: 15px;
+  }
+  .basket img {
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
   .ulCatalog {
     display: flex;
     flex-wrap: wrap;
@@ -36,6 +189,7 @@ import { MANGA } from "../../public/MANGA.js";
     list-style: none;
   }
   .container {
+    position: relative;
     padding: 114px;
     margin: 0 auto;
     width: 1152px;
@@ -100,7 +254,7 @@ import { MANGA } from "../../public/MANGA.js";
     line-height: normal;
     color: #fff;
   }
-  .buyBtn {
+  .buyBtnCatalog {
     margin: 0 auto;
     margin-top: 15px;
     width: 80px;
@@ -118,7 +272,7 @@ import { MANGA } from "../../public/MANGA.js";
     line-height: normal;
     transition: all 0.25s;
   }
-  .buyBtn:hover {
+  .buyBtnCatalog:hover {
     color: #fff;
     background-color: #8c5ee7;
   }
