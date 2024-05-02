@@ -25,7 +25,7 @@ import { MANGA } from "../../public/MANGA.js";
         </ul>
       </div>
       <div class="basket">
-        <img src="../../public/basket.svg" />
+        <img src="/basket.svg" />
         <span class="books">0</span>
       </div>
       <div class="basketValue shiftRight">
@@ -42,7 +42,6 @@ import { MANGA } from "../../public/MANGA.js";
   const basket = document.querySelector(".basket");
   const basketValue = document.querySelector(".basketValue");
 
-  console.log(basket);
   basket.addEventListener("click", () => {
     basketValue.classList.toggle("shiftRight");
   });
@@ -53,7 +52,6 @@ import { MANGA } from "../../public/MANGA.js";
     buyBtn.addEventListener("click", () => {
       booksNumber++;
       valueBook.textContent = booksNumber.toString();
-      console.log(booksNumber);
 
       const closestManga = buyBtn.closest(".manga");
       closestManga.classList.add("chosen");
