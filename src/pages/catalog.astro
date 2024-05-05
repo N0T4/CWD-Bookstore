@@ -29,7 +29,11 @@ import { MANGA } from "../../public/MANGA.js";
         <span class="books">0</span>
       </div>
       <div class="basketValue shiftRight">
-        <span> Basket is empty :(</span>
+        <div class="basketItem">
+          <span class="volume">Volume 2</span>
+          <span class="baskerPrice">9.99£</span>
+        </div>
+        <!-- <span> Basket is empty :(</span> -->
       </div>
     </div>
   </section>
@@ -41,6 +45,10 @@ import { MANGA } from "../../public/MANGA.js";
 
   const basket = document.querySelector(".basket");
   const basketValue = document.querySelector(".basketValue");
+
+  const basketItems = document.querySelector(".basketItem");
+  const volumePosition = document.querySelector(".volume");
+  const baskerPrice = document.querySelector("baskerPrice");
 
   basket.addEventListener("click", () => {
     basketValue.classList.toggle("shiftRight");
@@ -84,6 +92,33 @@ import { MANGA } from "../../public/MANGA.js";
 </script>
 
 <style>
+  body {
+    overflow: hidden;
+  }
+
+  .basketItem {
+    margin-top: 10px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 16px;
+  }
+  .basketItem::after {
+    position: absolute;
+    width: 1px;
+    height: 20px;
+    background-color: #000;
+    content: "";
+  }
+  .volume {
+  }
+  .baskerPrice {
+    color: #8c5ee7;
+  }
   .remove {
     cursor: pointer;
     overflow: hidden;
@@ -138,6 +173,7 @@ import { MANGA } from "../../public/MANGA.js";
     right: -17px;
     position: absolute;
     width: 222px;
+    height: 450px;
     min-height: 50px;
     padding: 10px;
     background-color: #ccc6f3;
@@ -147,7 +183,6 @@ import { MANGA } from "../../public/MANGA.js";
     right: -300px;
   }
   .basketValue span {
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
