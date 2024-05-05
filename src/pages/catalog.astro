@@ -12,7 +12,7 @@ import { MANGA } from "../../public/MANGA.js";
             MANGA.map((manga) => (
               <li>
                 <p class="remove">remove</p>
-                <div class="manga ">
+                <div class="manga" id={manga.volume}>
                   <img src={manga.image} class="mangaImg" />
                   <span class="price">{manga.price}</span>
                   <button type="button" class="buyBtnCatalog">
@@ -28,27 +28,31 @@ import { MANGA } from "../../public/MANGA.js";
         <img src="/basket.svg" />
         <span class="books">0</span>
       </div>
-      <div class="basketValue shiftRight">
-        <div class="basketItem">
-          <span class="volume">Volume 2</span>
-          <span class="baskerPrice">9.99£</span>
-        </div>
+      <div class="basketValue shiftRight" id="basketValue">
+        <span class="nothing">Nothing here:(</span>
+        {
+          MANGA.map((manga) => (
+            <div class="basketItem notChosen" id={manga.volume}>
+              <span class="volume">Volume {manga.volume}</span>
+              <span class="baskerPrice">{manga.price}</span>
+            </div>
+          ))
+        }
+
         <!-- <span> Basket is empty :(</span> -->
       </div>
     </div>
   </section>
 </Layout>
 <script>
+  import { MANGA } from "../../public/MANGA.js";
   const buyBtns = document.querySelectorAll(".buyBtnCatalog");
   const valueBook = document.querySelector(".books");
   const removeBooks = document.querySelectorAll(".remove");
 
   const basket = document.querySelector(".basket");
-  const basketValue = document.querySelector(".basketValue");
-
-  const basketItems = document.querySelector(".basketItem");
-  const volumePosition = document.querySelector(".volume");
-  const baskerPrice = document.querySelector("baskerPrice");
+  const basketValue = document.querySelector("#basketValue");
+  const nothing = document.querySelector(".nothing");
 
   basket.addEventListener("click", () => {
     basketValue.classList.toggle("shiftRight");
@@ -60,15 +64,25 @@ import { MANGA } from "../../public/MANGA.js";
     buyBtn.addEventListener("click", () => {
       booksNumber++;
       valueBook.textContent = booksNumber.toString();
-
+      nothing.style.display = "none";
       const closestManga = buyBtn.closest(".manga");
       closestManga.classList.add("chosen");
+      const closestMangaId = closestManga.id;
+      const mangaIndex = closestMangaId.toString();
 
       buyBtn.disabled = true;
 
       const li = closestManga.closest("li");
       const remove = li.querySelector(".remove");
       remove.classList.add("show");
+
+      const MangaItem = basketValue.querySelectorAll(".basketItem");
+
+      MangaItem.forEach((mangaItem) => {
+        if (mangaItem.id === mangaIndex) {
+          mangaItem.classList.remove("notChosen");
+        }
+      });
     });
   });
 
@@ -80,6 +94,18 @@ import { MANGA } from "../../public/MANGA.js";
       const li = removeBook.closest("li");
 
       const closestManga = li.querySelector(".manga");
+      const closestMangaId = closestManga.id;
+
+      const closestMangaItem = basketValue.querySelectorAll(".basketItem");
+
+      closestMangaItem.forEach((mangaItem) => {
+        if (mangaItem.id === closestMangaId) {
+          mangaItem.classList.add("notChosen");
+        }
+      });
+
+      console.log(closestMangaItem);
+
       closestManga.classList.remove("chosen");
 
       const closestBtn = closestManga.querySelector(".buyBtnCatalog");
@@ -92,7 +118,7 @@ import { MANGA } from "../../public/MANGA.js";
 </script>
 
 <style>
-  body {
+  section {
     overflow: hidden;
   }
 
@@ -107,6 +133,7 @@ import { MANGA } from "../../public/MANGA.js";
     background-color: #fff;
     border-radius: 16px;
   }
+
   .basketItem::after {
     position: absolute;
     width: 1px;
@@ -168,6 +195,7 @@ import { MANGA } from "../../public/MANGA.js";
     background-color: #b6aeea;
   }
   .basketValue {
+    overflow: scroll;
     border-radius: 20px;
     top: 120px;
     right: -17px;
@@ -307,5 +335,8 @@ import { MANGA } from "../../public/MANGA.js";
   .buyBtnCatalog:hover {
     color: #fff;
     background-color: #8c5ee7;
+  }
+  .notChosen {
+    display: none;
   }
 </style>
