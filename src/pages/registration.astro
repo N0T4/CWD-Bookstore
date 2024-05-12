@@ -53,7 +53,6 @@
     const enteredPassword = passwordInput.value;
 
     if (!storedLogin || !storedPassword) {
-      // If no stored login or password, store the entered credentials
       localStorage.setItem("userLogin", enteredLogin);
       localStorage.setItem("userPassword", enteredPassword);
       alert("New login and password stored.");
@@ -61,10 +60,8 @@
       enteredLogin === storedLogin &&
       enteredPassword === storedPassword
     ) {
-      // Redirect to the next page if entered credentials match stored ones
       window.location.href = "https://cwdbookstore.netlify.app/profile/";
     } else {
-      // Show error message if entered credentials don't match stored ones
       alert("Invalid login or password. Please try again.");
     }
   });
