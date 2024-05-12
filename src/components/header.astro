@@ -2,8 +2,8 @@
 
 ---
 
-<header>
-  <div class="logo">
+<header class="hiddenHeader" id="header">
+  <div class="logo" id="logoBtn">
     <img src="../jujutsu_logo.webp" alt="Logo" />
     <span>JK</span>
   </div>
@@ -60,6 +60,14 @@
   if (currentPageURL.includes("/contact-us/")) {
     home.classList.remove("active");
   }
+
+  const logoBtn = document.getElementById("logoBtn");
+  const header = document.getElementById("header");
+  if (window.innerWidth < 768) {
+    logoBtn.addEventListener("click", () => {
+      header.classList.remove("hiddenHeader");
+    });
+  }
 </script>
 
 <style>
@@ -106,6 +114,7 @@
     margin: 0 auto;
 
     box-sizing: border-box;
+    transition: all 0.4s;
   }
   ul {
     list-style: none;
@@ -203,10 +212,26 @@
   }
   @media screen and (max-width: 768px) {
     header {
+      padding-top: 10px;
       width: 320px;
+      height: auto;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-bottom: 10px;
+      transition: all 0.4s;
     }
     ul {
+      padding: 0px;
       flex-direction: column;
+    }
+    li {
+      text-align: center;
+    }
+    .logo {
+      margin: 0 auto;
+    }
+    .hiddenHeader {
+      top: -210px;
     }
   }
 </style>
