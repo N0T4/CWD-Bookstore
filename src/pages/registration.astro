@@ -47,17 +47,24 @@
     const storedPassword = localStorage.getItem("userPassword");
 
     console.log(storedLogin);
-
     console.log(storedPassword);
 
     const enteredLogin = loginInput.value;
     const enteredPassword = passwordInput.value;
 
-    if (enteredLogin === storedLogin && enteredPassword === storedPassword) {
-      // Redirect to the next page
+    if (!storedLogin || !storedPassword) {
+      // If no stored login or password, store the entered credentials
+      localStorage.setItem("userLogin", enteredLogin);
+      localStorage.setItem("userPassword", enteredPassword);
+      alert("New login and password stored.");
+    } else if (
+      enteredLogin === storedLogin &&
+      enteredPassword === storedPassword
+    ) {
+      // Redirect to the next page if entered credentials match stored ones
       window.location.href = "nextPage.html";
     } else {
-      // Show error message
+      // Show error message if entered credentials don't match stored ones
       alert("Invalid login or password. Please try again.");
     }
   });
