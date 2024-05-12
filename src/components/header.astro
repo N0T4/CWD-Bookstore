@@ -63,11 +63,12 @@
 
   const logoBtn = document.getElementById("logoBtn");
   const header = document.getElementById("header");
-  if (window.innerWidth < 768) {
-    logoBtn.addEventListener("click", () => {
-      header.classList.remove("hiddenHeader");
-    });
-  }
+
+  logoBtn.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      header.classList.toggle("hiddenHeader");
+    }
+  });
 </script>
 
 <style>
@@ -218,7 +219,8 @@
       flex-direction: column-reverse;
       align-items: center;
       padding-bottom: 10px;
-      transition: all 0.4s;
+      top: 0px;
+      transition: top 0.4s;
     }
     ul {
       padding: 0px;
