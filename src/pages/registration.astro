@@ -1,0 +1,247 @@
+---
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&family=Lexend+Tera:wght@100..900&family=Libre+Barcode+39+Extended+Text&family=M+PLUS+2:wght@100..900&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Maven+Pro:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Book Store</title>
+  </head>
+  <body>
+    <section>
+      <div class="regHero">
+        <img src="../JujutsuKaise.png" alt="" class="heroImg" />
+        <h1>BOOK STORE</h1>
+      </div>
+      <div class="regBlock">
+        <div class="contextRegBlock">
+          <img src="../jujutsu_logo.webp" alt="" class="logoReg" />
+          <label for="login">LOGIN</label>
+          <input type="text" id="login" placeholder="USERNAME" />
+          <label for="password">PASSWORD</label>
+          <input type="password" id="password" placeholder="******" />
+          <button type="button" class="logIn" id="logIn">START</button>
+        </div>
+      </div>
+      <span>Official publisher®</span>
+    </section>
+  </body>
+</html>
+<script>
+  const loginInput = document.getElementById("login");
+  const passwordInput = document.getElementById("password");
+  const logInButton = document.getElementById("logIn");
+
+  logInButton.addEventListener("click", () => {
+    const storedLogin = localStorage.getItem("userLogin");
+    const storedPassword = localStorage.getItem("userPassword");
+
+    console.log(storedLogin);
+
+    console.log(storedPassword);
+
+    const enteredLogin = loginInput.value;
+    const enteredPassword = passwordInput.value;
+
+    if (enteredLogin === storedLogin && enteredPassword === storedPassword) {
+      // Redirect to the next page
+      window.location.href = "nextPage.html";
+    } else {
+      // Show error message
+      alert("Invalid login or password. Please try again.");
+    }
+  });
+</script>
+<style>
+  * {
+    padding: 0px;
+    margin: 0px auto;
+  }
+  span {
+    z-index: 10;
+    position: absolute;
+    left: 18px;
+    bottom: 22px;
+
+    color: #fff;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    opacity: 0.7;
+  }
+  div {
+    z-index: 10;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 400;
+
+    background: url(../bgVers2.jpeg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  h1 {
+    z-index: 10;
+    margin-top: 48px;
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 98px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    background: var(--GR, linear-gradient(173deg, #b7a1e4 -0.15%, #fff 53.1%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    transition: all 0.4s;
+    transition-delay: 0.4s;
+  }
+  .regHero::after {
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000069;
+    backdrop-filter: blur(3px);
+    transition: all 0.4s ease;
+    transition-delay: 0.4s;
+  }
+  .heroImg {
+    transition: all 0.4s;
+    transition-delay: 0.4s;
+  }
+  .regHero:hover::after {
+    backdrop-filter: blur(0px);
+    background-color: transparent;
+  }
+  .regHero:hover h1 {
+    opacity: 0;
+  }
+  .regHero:hover .heroImg {
+    opacity: 0;
+  }
+  label {
+    color: #50f;
+    text-align: start;
+    font-family: "M PLUS 2";
+    font-size: 24px;
+
+    margin-left: 19px;
+
+    font-weight: 300;
+    line-height: normal;
+
+    margin-top: 35px;
+  }
+  input {
+    padding: 12px;
+    padding-left: 19px;
+    padding-right: 19px;
+    box-sizing: border-box;
+    width: 320px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: #e2dbf0;
+    transition: all 0.3s;
+  }
+  input:hover {
+    border: 2px solid #8c5ee7;
+  }
+  input[type="text"] {
+    color: #000;
+    text-align: start;
+    font-family: "M PLUS 2";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  input[type="password"] {
+    color: #000;
+    text-align: start;
+    font-family: "M PLUS 2";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  img {
+    z-index: 10;
+    width: 654px;
+    height: 239px;
+  }
+  .regHero {
+    margin: 0 auto;
+  }
+  .logoReg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 17px;
+  }
+  .regBlock {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    height: 100vh;
+    width: 551px;
+  }
+  .contextRegBlock {
+    margin: 0 auto;
+    width: 320px;
+  }
+  .logIn {
+    box-sizing: border-box;
+
+    border: 2px solid transparent;
+    color: #50f;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration: none;
+    width: 195px;
+    height: 50px;
+    border-radius: 10px;
+    background: #e2dbf0;
+
+    margin-top: 87px;
+
+    transition: all 0.3s;
+  }
+  .logIn:hover {
+    border: 2px solid #50f;
+  }
+</style>
