@@ -1,40 +1,109 @@
 ---
 import Layout from "./layout.astro";
-
-
 ---
 
-<Layout> 
-<div> 
-  <section class="headimage"><img src="/about_office.png"></img> <p>BOOK STORE</p></section>
-</div>
-<style>
-    .headimage {
-      width: 1512px;
-      height: 600px;
-      flex-shrink: 0;
-      background: var(--MAINGR, linear-gradient(130deg, #000 25.43%, #8C5EE7 140.97%));
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      color: aliceblue;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .headimage>p {
-      text-align: center;
-      font-family: "Libre Barcode 39 Extended Text";
-      font-size: 120px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      margin: 0;
-      position: absolute;
-    }
-    .headimage>img{
-      width: 1512px;
-      height: 600px;
-    }
-</style>
-<script>
-  </script>
+<Layout>
+  <section class="headimage">
+    <img src="/about_office.png" />
+    <h1>BOOK STORE</h1>
+  </section>
+  <div class="container">
+    <h2>ABOUT</h2>
+    <section class="about">
+      <div class="left">
+        <p>
+          Welcome to our Shibuya Parco store, your haven for all things magical
+          battle manga! Immerse yourself in a world where every page crackles
+          with the energy of epic confrontations and mystical powers. Our store
+          is a treasure trove for manga enthusiasts seeking the thrill of
+          intense battles, intricate plots, and captivating characters. Discover
+          a diverse collection that spans genres and generations, from classic
+          series that laid the foundation of the genre to the latest releases
+          that push the boundaries of imagination. Whether you're a seasoned
+          collector or a newcomer to the world of manga, our shelves hold
+          something enchanting for everyone. Step into our realm and let your
+          imagination soar as you delve into tales of valor, friendship, and the
+          ultimate quest for power. Join us at our Shibuya Parco store and
+          embark on an unforgettable journey through the realms of magical
+          battle manga.
+        </p>
+      </div>
+      <div class="right">
+        <img src="/aboutPic1.jpg" alt="" />
+        <img src="/aboutPic2.jpg" alt="" />
+      </div>
+    </section>
+  </div>
 </Layout>
+
+<style>
+  .container {
+    width: 1152px;
+    margin: 0 auto;
+  }
+  img {
+    width: 517px;
+    height: 335px;
+  }
+  .headimage {
+    width: 1512px;
+    height: 600px;
+    flex-shrink: 0;
+    background: var(
+      --MAINGR,
+      linear-gradient(130deg, #000 25.43%, #8c5ee7 140.97%)
+    );
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .headimage > h1 {
+    text-align: center;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    position: absolute;
+  }
+  .headimage > img {
+    width: 1512px;
+    height: 600px;
+  }
+  .left p {
+    margin: 0px;
+    color: #000;
+    font-family: "M PLUS 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .about {
+    display: flex;
+    gap: 81px;
+    margin-top: 21px;
+    margin-bottom: 92px;
+  }
+  h2 {
+    text-align: center;
+
+    color: #000;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+</style>
+<script></script>
