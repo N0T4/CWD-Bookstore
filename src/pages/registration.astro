@@ -55,8 +55,10 @@
     const enteredLogin = loginInput.value;
     const enteredPassword = passwordInput.value;
 
-    sessionStorage.setItem("userLogin", "mike");
-    sessionStorage.setItem("userPassword", "12345");
+    sessionStorage.setItem("userLogin", enteredLogin);
+    sessionStorage.setItem("userPassword", enteredPassword);
+
+    console.log(sessionStorage.getItem("userLogin"));
 
     if (!storedLogin || !storedPassword) {
       sessionStorage.setItem("userLogin", enteredLogin);
