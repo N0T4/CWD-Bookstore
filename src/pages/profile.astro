@@ -5,42 +5,59 @@ import Layout from "./layout.astro";
 <Layout >
     <div>
         <section id="hero">
-            <div id="username">
-                USERNAME
+            <div id="heroUsername">
+                <span id="span"></span>
             </div>
         </section>
 
         <section id="main">
             <div id="outerBox">
                 <div id="profileBox">
-                    <div>
-                        <ul>
-                            <li>
-                                <span>NAME</span>
-
-                            </li>
-                            <li>
-                                <span>NAME</span>
-                            </li>
-                            <li>
-                                <span>PASSWORD</span>
-                            </li>
-                            <li>
-                                SAVE
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
+                    <div class="container">
                         <div>
-                            <img src="./public/pandaAva.webp" alt="">
+                            <ul class="userInfo">
+                                <li class="name">
+                                    <span>NAME</span>
+    
+                                </li>
+                                <li class="email">
+                                    <span>NAME</span>
+                                </li>
+                                <li>
+                                    <span>PASSWORD</span>
+                                </li>
+                                <li class="password">
+                                    SAVE
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="avatarBox">
+                                <img src="/pandaAva.webp" alt="">
+                            </div>
+                            SAVE
+                        </div>
+                        <div>
+                            <span>ABOUT</span>
+                            <div class="aboutProfileBox">gg</div>
                         </div>
                     </div>
-                    <div></div>
                 </div>
             </div>
         </section>
     </div>
 </Layout>
+
+
+<script>
+    const username = localStorage.getItem("userName");
+    const password = localStorage.getItem('passWord');
+    const headerName = document.getElementById('#span');
+
+    headerName.textContent = username;
+</script>
+
+
 <style>
     #hero {
         width: 100;
@@ -50,7 +67,7 @@ import Layout from "./layout.astro";
 
     }
 
-    #username {
+    #heroUsername {
         color: #FFF;
         text-align: center;
         align-items: center;
@@ -79,10 +96,15 @@ import Layout from "./layout.astro";
         flex-shrink: 0;
         border-radius: 15px;
         background: #FFF;
-        display: flex;
     }
 
-    span {
+    .container {
+        margin: 1.7rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container span {
         color: #50F;
         text-align: center;
         font-family: "M PLUS 2";
@@ -90,6 +112,21 @@ import Layout from "./layout.astro";
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+
+    .avatarBox {
+        background-color: #E2DBF0;
+        border-radius: 300px;
+        padding: 1rem;
+
+    }
+
+    .aboutProfileBox {
+        border-radius: 10px;
+        border: 2px solid #8C5EE7;
+        background: #E2DBF0;
+        width: 18rem;
+        height: 18rem;
     }
 
 </style>
