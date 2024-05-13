@@ -46,7 +46,7 @@ import Layout from "./layout.astro";
 </Layout>
 
 <script>
-  import { storedLogin } from "./registration.astro";
+  import storedLogin from "./registration.astro";
 
   const username = sessionStorage.getItem("userName");
   const password = sessionStorage.getItem("passWord");
