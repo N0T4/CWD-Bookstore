@@ -1,5 +1,6 @@
 ---
 import Layout from "./layout.astro";
+import storedLogin from "./registration.astro";
 ---
 
 <Layout>
@@ -45,20 +46,7 @@ import Layout from "./layout.astro";
   </div>
 </Layout>
 
-<script>
-  import storedLogin from "./registration.astro";
-
-  const usernameObject = storedLogin[0];
-  const passwordObject = storedLogin[1];
-  const username = usernameObject.username;
-  const password = passwordObject.password;
-
-  console.log(username); // Output: JohnDoe
-  console.log(password);
-  let headerName = document.getElementById("span");
-
-  headerName.textContent = username;
-</script>
+<script></script>
 
 <style>
   #hero {

@@ -73,10 +73,13 @@
       alert("Invalid login or password. Please try again.");
     }
   });
-  export const storedLogin = [
+  export const storedLogin1 = [
     { username: sessionStorage.getItem("userLogin") },
     { password: sessionStorage.getItem("userPassword") },
   ];
+  console.log(storedLogin1);
+  console.log(sessionStorage.getItem("userLogin"));
+  console.log(sessionStorage.getItem("userPassword"));
 </script>
 <style>
   * {
