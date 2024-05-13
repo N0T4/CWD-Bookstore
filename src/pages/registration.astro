@@ -46,8 +46,9 @@
   const logInButton = document.getElementById("logIn");
 
   logInButton.addEventListener("click", () => {
-    let storedLogin = sessionStorage.getItem("userLogin");
-    let storedPassword = sessionStorage.getItem("userPassword");
+    // Retrieve stored login and password from cookies
+    let storedLogin = getCookie("userLogin");
+    let storedPassword = getCookie("userPassword");
 
     console.log(storedLogin);
     console.log(storedPassword);
@@ -56,8 +57,8 @@
     const enteredPassword = passwordInput.value;
 
     if (!storedLogin || !storedPassword) {
-      sessionStorage.setItem("userLogin", enteredLogin);
-      sessionStorage.setItem("userPassword", enteredPassword);
+      setCookie("userLogin", enteredLogin);
+      setCookie("userPassword", enteredPassword);
       alert("New login and password stored.");
     } else if (
       enteredLogin === storedLogin &&
@@ -68,6 +69,29 @@
       alert("Invalid login or password. Please try again.");
     }
   });
+
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  // Function to get a cookie
+  function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
 </script>
 <style>
   * {
