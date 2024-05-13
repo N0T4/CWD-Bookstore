@@ -46,13 +46,14 @@ import Layout from "./layout.astro";
 </Layout>
 
 <script>
-  import storedLogin from "./registration.astro";
+  import { storedLogin } from "./registration.astro";
 
+  const { usernameStore, passwordStore } = storedLogin;
+
+  console.log(usernameStore);
   const username = sessionStorage.getItem("userName");
   const password = sessionStorage.getItem("passWord");
   let headerName = document.getElementById("span");
-
-  console.log(storedLogin);
 
   headerName.textContent = username;
 </script>
