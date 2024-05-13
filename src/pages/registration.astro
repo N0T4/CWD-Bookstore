@@ -46,8 +46,8 @@
   const logInButton = document.getElementById("logIn");
 
   logInButton.addEventListener("click", () => {
-    const storedLogin = localStorage.getItem("userLogin");
-    const storedPassword = localStorage.getItem("userPassword");
+    const storedLogin = sessionStorage.getItem("userLogin");
+    const storedPassword = sessionStorage.getItem("userPassword");
 
     console.log(storedLogin);
     console.log(storedPassword);
@@ -56,8 +56,8 @@
     const enteredPassword = passwordInput.value;
 
     if (!storedLogin || !storedPassword) {
-      localStorage.setItem("userLogin", enteredLogin);
-      localStorage.setItem("userPassword", enteredPassword);
+      sessionStorage.setItem("userLogin", enteredLogin);
+      sessionStorage.setItem("userPassword", enteredPassword);
       alert("New login and password stored.");
     } else if (
       enteredLogin === storedLogin &&
