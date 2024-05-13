@@ -29,7 +29,7 @@
 </section>
 
 <script>
-  import { MANGA } from "./MANGA.js";
+  import { MANGA } from "../../../public/MANGA.js";
 
   const modalWindow = document.getElementById("overlayNew");
   const closeBtn = document.getElementById("closeBtnNew");
@@ -77,6 +77,12 @@
       openModalWindowNew();
       const modalImg = modalWindow.querySelector(".modalImgNew");
       const mangaDiv = this.querySelector(".mangaImgNew");
+
+      const spanMain = this.querySelector(".prevPrice");
+      const spanModal = modalWindow.querySelector(".prevPrice");
+
+      spanModal.textContent = spanMain.textContent;
+
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -195,6 +201,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .manga:hover {
+    background: #cdbdee;
   }
 
   .manga::after {
@@ -244,5 +254,27 @@
 
     margin-top: 23px;
     color: black;
+  }
+  @media screen and (max-width: 1152px) {
+    .cardSecNew {
+      width: 625px;
+    }
+    img {
+      width: 132px;
+      height: 209px;
+    }
+    .manga {
+      height: 330px;
+    }
+    .prevPrice {
+      top: 235px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .cardSecNew {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      flex-direction: column;
+    }
   }
 </style>

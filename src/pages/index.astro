@@ -249,6 +249,7 @@ import CardPopular from "../components/cards/cardPopular.astro";
     width: 350px;
     height: 250px;
   }
+
   .peopleText > span {
     color: #000;
     text-align: center;
@@ -269,7 +270,7 @@ import CardPopular from "../components/cards/cardPopular.astro";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 900px;
+    width: 1100px;
     gap: 0px;
     margin-bottom: 103px;
     transition: all 0.4s;
@@ -278,12 +279,13 @@ import CardPopular from "../components/cards/cardPopular.astro";
     width: 1152px;
   }
   .peopleLi {
+    gap: 0px;
     display: flex;
     flex-direction: row;
-    border: 5px solid white;
+    border: 3px solid white;
     position: relative;
     overflow: hidden;
-    width: 100px;
+    width: 150px;
     transition: all 0.4s;
   }
   .peopleLi:hover {
@@ -516,6 +518,59 @@ import CardPopular from "../components/cards/cardPopular.astro";
     }
     to {
       transform: translateX(100%);
+    }
+  }
+  @media screen and (max-width: 1152px) {
+    .peopleUl {
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 768px;
+    }
+    .peopleUl:hover {
+      width: 768px;
+    }
+    .container {
+      width: 100%;
+    }
+    .results {
+      width: 768px;
+    }
+    .peopleLi:hover {
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .peopleUl {
+      width: 100%;
+      justify-content: center;
+    }
+    .peopleLi:hover {
+      width: 320px;
+    }
+    .peopleLi {
+      width: 320px;
+    }
+    .peopleUl:hover {
+      width: 320px;
+    }
+    .results {
+      width: 320px;
+      height: auto;
+    }
+    h2 {
+      font-size: 58px;
+    }
+    .menu {
+      width: 300px;
+      height: auto;
+    }
+    .menu ul {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
+    .menu li {
+      justify-content: center;
     }
   }
 </style>

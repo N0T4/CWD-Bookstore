@@ -32,7 +32,7 @@
 </section>
 
 <script>
-  import { MANGA } from "./MANGA.js";
+  import { MANGA } from "../../../public/MANGA.js";
 
   const modalWindow = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeBtn");
@@ -77,6 +77,12 @@
       openModalWindow();
       const modalImg = modalWindow.querySelector(".modalImg");
       const mangaDiv = this.querySelector(".mangaImg");
+
+      const spanMain = this.querySelector(".price");
+      const spanModal = modalWindow.querySelector(".price");
+
+      spanModal.textContent = spanMain.textContent;
+
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -195,6 +201,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .mangaSale:hover {
+    background: #cdbdee;
   }
 
   .mangaSale::after {
@@ -271,5 +281,38 @@
 
     margin-top: 23px;
     color: black;
+  }
+  @media screen and (max-width: 1152px) {
+    .cardSecSale {
+      width: 320px;
+    }
+    img {
+      width: 132px;
+      height: 209px;
+    }
+    .mangaSale {
+      height: 330px;
+    }
+    .prevPrice {
+      top: 235px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .cardSecSale {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      width: 625px;
+      flex-direction: column;
+    }
+    img {
+      width: 132px;
+      height: 209px;
+    }
+    .mangaSale {
+      height: 330px;
+    }
+    .prevPrice {
+      top: 235px;
+    }
   }
 </style>

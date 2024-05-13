@@ -22,14 +22,14 @@
     <div class="modalWindowPop">
       <button type="button" class="closeBtn" id="closeBtnPop">close</button>
       <img src="./MANGA/8.jpg" class="modalImg" />
-      <span class="prevPrice">8.99€</span>
+      <span class="prevPrice">8.90€</span>
       <button type="button" class="buyBtn" id="buyBtnPop">BUY</button>
     </div>
   </div>
 </section>
 
 <script>
-  import { MANGA } from "./MANGA.js";
+  import { MANGA } from "../../../public/MANGA.js";
 
   const modalWindow = document.getElementById("overlayPop");
   const closeBtn = document.getElementById("closeBtnPop");
@@ -81,6 +81,11 @@
       openModalWindow();
       const modalImg = modalWindow.querySelector(".modalImg");
       const mangaDiv = this.querySelector(".mangaImg");
+
+      const spanMain = this.querySelector(".prevPrice");
+      const spanModal = modalWindow.querySelector(".prevPrice");
+
+      spanModal.textContent = spanMain.textContent;
       const imgSrc = mangaDiv.src;
       modalImg.src = imgSrc; // it is okay everything is fine
     });
@@ -199,6 +204,10 @@
     height: 374px;
     border-radius: 20px;
     background: #e2dbf0;
+    transition: all 0.2s;
+  }
+  .mangaPopular:hover {
+    background: #cdbdee;
   }
 
   .mangaPopular::after {
@@ -248,5 +257,27 @@
 
     margin-top: 23px;
     color: black;
+  }
+  @media screen and (max-width: 1152px) {
+    .cardSecPopular {
+      width: 625px;
+    }
+    img {
+      width: 132px;
+      height: 209px;
+    }
+    .mangaPopular {
+      height: 330px;
+    }
+    .prevPrice {
+      top: 235px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .cardSecPopular {
+      padding-top: 25px;
+      padding-bottom: 25px;
+      flex-direction: column;
+    }
   }
 </style>

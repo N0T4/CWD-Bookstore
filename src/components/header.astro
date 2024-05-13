@@ -2,8 +2,8 @@
 
 ---
 
-<header>
-  <div class="logo">
+<header class="hiddenHeader" id="header">
+  <div class="logo" id="logoBtn">
     <img src="../jujutsu_logo.webp" alt="Logo" />
     <span>JK</span>
   </div>
@@ -16,7 +16,7 @@
     </ul>
   </nav>
   <div class="profBtn prof">
-    <a href="/profile/">Profile</a>
+    <a href="/registration/">Profile</a>
   </div>
 </header>
 <script>
@@ -60,6 +60,15 @@
   if (currentPageURL.includes("/contact-us/")) {
     home.classList.remove("active");
   }
+
+  const logoBtn = document.getElementById("logoBtn");
+  const header = document.getElementById("header");
+
+  logoBtn.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      header.classList.toggle("hiddenHeader");
+    }
+  });
 </script>
 
 <style>
@@ -106,6 +115,7 @@
     margin: 0 auto;
 
     box-sizing: border-box;
+    transition: all 0.4s;
   }
   ul {
     list-style: none;
@@ -124,6 +134,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition: all 0.3s;
   }
   a:hover {
     color: #8c5ee7;
@@ -144,6 +155,7 @@
     border-radius: 10px;
     color: #fff;
     background-color: #8c5ee7;
+    transition: all 0.3s;
   }
   .activeBtn::after {
     content: "";
@@ -169,6 +181,10 @@
     padding: 4px 18px;
     border-radius: 10px;
     background: #e2dbf0;
+    transition: all 0.3s;
+  }
+  .profBtn > a::after {
+    content: "";
   }
   .profBtn > a:hover {
     color: #fff;
@@ -185,5 +201,39 @@
     height: 30px;
 
     background: #8c5ee7;
+    transition: all 0.3s;
+  }
+  @media screen and (max-width: 1152px) {
+    header {
+      width: 625px;
+    }
+    ul {
+      gap: 20px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    header {
+      padding-top: 10px;
+      width: 320px;
+      height: auto;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-bottom: 10px;
+      top: 0px;
+      transition: top 0.4s;
+    }
+    ul {
+      padding: 0px;
+      flex-direction: column;
+    }
+    li {
+      text-align: center;
+    }
+    .logo {
+      margin: 0 auto;
+    }
+    .hiddenHeader {
+      top: -210px;
+    }
   }
 </style>
