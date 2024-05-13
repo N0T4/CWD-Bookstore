@@ -169,8 +169,8 @@ import { MANGA } from "../../public/MANGA.js";
     filter: grayscale(1);
   }
   .basket {
-    top: 80px;
-    right: 80px;
+    top: 20px;
+    right: 20px;
     position: absolute;
 
     display: flex;
@@ -194,8 +194,8 @@ import { MANGA } from "../../public/MANGA.js";
   .basketValue {
     overflow: scroll;
     border-radius: 20px;
-    top: 120px;
-    right: -17px;
+    top: 65px;
+    right: -40px;
     position: absolute;
     width: 222px;
     height: 450px;
@@ -205,7 +205,7 @@ import { MANGA } from "../../public/MANGA.js";
     transition: all 0.2s;
   }
   .shiftRight {
-    right: -300px;
+    right: -500px;
   }
   .basketValue span {
     display: flex;
@@ -247,9 +247,10 @@ import { MANGA } from "../../public/MANGA.js";
   }
   .container {
     position: relative;
-    padding: 114px;
     margin: 0 auto;
     width: 1152px;
+    margin-top: 100px;
+    margin-bottom: 50px;
   }
   .catalog {
     padding: 20px;
@@ -335,5 +336,47 @@ import { MANGA } from "../../public/MANGA.js";
   }
   .notChosen {
     display: none;
+  }
+  @media screen and (max-width: 1152px) {
+    .ulCatalog {
+      padding: 0px;
+      justify-content: center;
+    }
+    .catalog {
+      width: 768px;
+    }
+    .container {
+      padding: 0px;
+      margin-top: 100px;
+      width: 768px;
+    }
+    .basket {
+      top: 20px;
+      right: 20px;
+    }
+    .basketValue {
+      top: 65px;
+      height: 300px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .catalog {
+      width: 280px;
+    }
+    .container {
+      width: 100%;
+    }
+    .basket {
+      top: 0;
+      right: 10px;
+    }
+    .basketValue {
+      top: 45px;
+      right: 40px;
+      height: 200px;
+    }
+    .shiftRight {
+      right: -400px;
+    }
   }
 </style>
