@@ -6,7 +6,7 @@ import Layout from "./layout.astro";
     <div>
         <section id="hero">
             <div id="heroUsername">
-                <span id="span"></span>
+                <span id="span">USERNAME</span>
             </div>
         </section>
 
@@ -50,13 +50,14 @@ import Layout from "./layout.astro";
 
 
 <script>
-    const username = localStorage.getItem("userName");
-    const password = localStorage.getItem("passWord");
+    const username = sessionStorage.getItem("userName");
+    const password = sessionStorage.getItem("passWord");
     let headerName = document.getElementById("span");
 
     console.log(username);
 
     headerName.textContent = username;
+
 </script>
 
 
