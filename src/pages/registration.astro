@@ -45,9 +45,11 @@
   const passwordInput = document.getElementById("password");
   const logInButton = document.getElementById("logIn");
 
+  export let storedLogin = "";
+  export let storedPassword = "";
   logInButton.addEventListener("click", () => {
-    const storedLogin = sessionStorage.getItem("userLogin");
-    const storedPassword = sessionStorage.getItem("userPassword");
+    storedLogin = sessionStorage.getItem("userLogin");
+    storedPassword = sessionStorage.getItem("userPassword");
 
     console.log(storedLogin);
     console.log(storedPassword);
