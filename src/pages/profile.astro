@@ -48,9 +48,13 @@ import Layout from "./layout.astro";
 <script>
   import storedLogin from "./registration.astro";
 
-  console.log(storedLogin[0]);
-  const username = sessionStorage.getItem("userName");
-  const password = sessionStorage.getItem("passWord");
+  const usernameObject = storedLogin[0];
+  const passwordObject = storedLogin[1];
+  const username = usernameObject.username;
+  const password = passwordObject.password;
+
+  console.log(username); // Output: JohnDoe
+  console.log(password);
   let headerName = document.getElementById("span");
 
   headerName.textContent = username;
