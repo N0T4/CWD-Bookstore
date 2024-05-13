@@ -50,11 +50,13 @@ import Layout from "./layout.astro";
 
 
 <script>
+    import storedLogin from "./registration.astro";
+
     const username = sessionStorage.getItem("userName");
     const password = sessionStorage.getItem("passWord");
     let headerName = document.getElementById("span");
 
-    console.log(username);
+    console.log(storedLogin);
 
     headerName.textContent = username;
 
