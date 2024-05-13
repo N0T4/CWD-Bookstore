@@ -55,6 +55,9 @@
     const enteredLogin = loginInput.value;
     const enteredPassword = passwordInput.value;
 
+    sessionStorage.setItem("userLogin", "mike");
+    sessionStorage.setItem("userPassword", "12345");
+
     if (!storedLogin || !storedPassword) {
       sessionStorage.setItem("userLogin", enteredLogin);
       sessionStorage.setItem("userPassword", enteredPassword);
@@ -68,10 +71,10 @@
       alert("Invalid login or password. Please try again.");
     }
   });
-  export const storedLogin = {
-    username: sessionStorage.getItem("userLogin"),
-    password: sessionStorage.getItem("userPassword"),
-  };
+  export const storedLogin = [
+    { username: sessionStorage.getItem("userLogin") },
+    { password: sessionStorage.getItem("userPassword") },
+  ];
 </script>
 <style>
   * {
