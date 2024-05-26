@@ -41,45 +41,25 @@
   </body>
 </html>
 <script>
-  const loginInput = document.getElementById("login");
-  const passwordInput = document.getElementById("password");
-  const logInButton = document.getElementById("logIn");
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginInput = document.getElementById("login");
+    const passwordInput = document.getElementById("password");
+    const logInButton = document.getElementById("logIn");
 
-  const enteredLogin = loginInput.value;
-  const enteredPassword = passwordInput.value;
+    logInButton.addEventListener("click", function () {
+      const login = loginInput.value;
+      const password = passwordInput.value;
 
-  sessionStorage.setItem("userLogin", enteredLogin);
-  sessionStorage.setItem("userPassword", enteredPassword);
+      if (login.length >= 4 && password.length >= 4) {
+        localStorage.setItem("login", login);
+        localStorage.setItem("password", password);
 
-  logInButton.addEventListener("click", () => {
-    let storedLogin = sessionStorage.getItem("userLogin");
-    let storedPassword = sessionStorage.getItem("userPassword");
-
-    console.log(storedLogin);
-    console.log(storedPassword);
-
-    console.log(sessionStorage.getItem("userLogin"));
-
-    if (!storedLogin || !storedPassword) {
-      sessionStorage.setItem("userLogin", enteredLogin);
-      sessionStorage.setItem("userPassword", enteredPassword);
-      alert("New login and password stored.");
-    } else if (
-      enteredLogin === storedLogin &&
-      enteredPassword === storedPassword
-    ) {
-      window.location.href = "https://cwdbookstore.netlify.app/profile/";
-    } else {
-      alert("Invalid login or password. Please try again.");
-    }
+        window.location.href = "/profile.html";
+      } else {
+        alert("Username and password must be at least 4 characters long.");
+      }
+    });
   });
-  export const storedLogin1 = [
-    { username: sessionStorage.getItem("userLogin") },
-    { password: sessionStorage.getItem("userPassword") },
-  ];
-  console.log(storedLogin1);
-  console.log(sessionStorage.getItem("userLogin"));
-  console.log(sessionStorage.getItem("userPassword"));
 </script>
 <style>
   * {
