@@ -36,7 +36,7 @@ import storedLogin from "./registration.astro";
                         </div>
                         <button id="reloadBtn">
                             <div id="reload">
-                                <img src="/reload-svgrepo-com.svg" alt="" id="reloadIcon">
+                                <img src="/reload.svg" alt="" id="reloadIcon">
                             </div>
                         </button>
                         <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
@@ -94,6 +94,60 @@ import storedLogin from "./registration.astro";
                 password: password
             };
     })
+
+
+
+
+
+    let carousel = document.querySelector(".avatarBox");
+    let icons = carousel.querySelectorAll("img");
+
+
+
+    //shuffling the questions - randomly ordered carousel
+    icons = Array.from(icons);
+    icons.sort(function(){
+        return 0.5 - Math.random();
+    })
+    for(let i=0; i<icons.length; i++){
+        carousel.appendChild(icons[i]);
+    }
+
+
+
+
+    let nextButton = document.querySelector("#next");
+    let prevButton = document.querySelector("#prev");
+    let counter = 0;
+
+    refreshCarousel()
+
+
+    //buttons
+    nextButton.addEventListener("click", function(){
+        if(counter < icons.length-1) {
+            counter++;
+            refreshCarousel();
+        }
+    })
+
+    prevButton.addEventListener("click", function(){
+        if(counter > 0) {
+            counter--;
+            refreshCarousel();
+        }
+    })
+
+
+
+    //function to hide all questions and show one  
+    function refreshCarousel(){
+        for (let i=0; i<icons.length; i++) {
+            icons[i].style.display = "none";
+        }
+        icons[counter].style.display = "block";
+    }
+
 
 </script>
 
@@ -170,15 +224,17 @@ import storedLogin from "./registration.astro";
     }
 
     #reloadBtn {
-        padding: .5rem;
+        padding: .5rem .6rem;
         border-radius: 300px;
-        border: solid 2px;
-        border-color: #8C5EE7;
+        border: none;
         background-color: #8C5EE7;
+        position: relative;
+        bottom: 60px;
+        left: 80px;
     }
 
     #reloadIcon {
-        width: 35px;
+        width: 30px;
     }
 
 
@@ -254,6 +310,8 @@ import storedLogin from "./registration.astro";
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        word-wrap: break-word;
+        word-break: break-all;
     }
 
     .infoInput:focus {
@@ -267,6 +325,10 @@ import storedLogin from "./registration.astro";
     }
 
     .profileBtn:active {
+        background-color: #773bef;
+    }
+
+    #reloadBtn:active {
         background-color: #773bef;
     }
 
