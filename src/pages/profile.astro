@@ -57,7 +57,8 @@ import storedLogin from "./registration.astro";
     const username = sessionStorage.getItem("userName");
     const password = sessionStorage.getItem("passWord");
     let headerName = document.getElementById("span");
-    let labelName = document.getElementById("infoName") as HTMLInputElement;
+    const labelName = document.getElementById("infoName") as HTMLInputElement;
+    const labelPassword = document.getElementById('infoPassword');
     const saveInfoBtn = document.getElementById('saveInfoBtn');
     
     console.log(storedLogin);
