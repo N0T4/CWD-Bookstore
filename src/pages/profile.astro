@@ -36,7 +36,7 @@ import storedLogin from "./registration.astro";
                         </div>
                         <button id="reloadBtn">
                             <div id="reload">
-                                <img src="/reload.svg" alt="">
+                                <img src="/reload-svgrepo-com.svg" alt="" id="reloadIcon">
                             </div>
                         </button>
                         <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
@@ -168,6 +168,19 @@ import storedLogin from "./registration.astro";
         margin: 0 auto;
 
     }
+
+    #reloadBtn {
+        padding: .5rem;
+        border-radius: 300px;
+        border: solid 2px;
+        border-color: #8C5EE7;
+        background-color: #8C5EE7;
+    }
+
+    #reloadIcon {
+        width: 35px;
+    }
+
 
     #saveAvatarBtn {
         margin: 1.2rem;
