@@ -6,5 +6,5 @@ export default defineConfig({
       external: ['svelte']
     }
   },
-  base: '',
+  base: '/',
 });
