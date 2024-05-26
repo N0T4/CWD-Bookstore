@@ -1,10 +1,10 @@
 ---
-import Layout from "./layout.astro";
+import Layout from "../components/layout/layout.astro";
 import storedLogin from "./registration.astro";
 ---
 
 <Layout>
-<div>
+  <div>
     <section id="hero">
       <div id="heroUsername">
         <span id="span">USERNAME</span>
@@ -12,170 +12,181 @@ import storedLogin from "./registration.astro";
     </section>
 
     <section id="main">
-        <div id="outerBox">
-            <div id="profileBox">
-                <div class="container">
-                    <div id="info" class="flexItem">
-                        <form id="infoForm">
-                            <label for="infoName" class="label" class="infoLabel">NAME</label>
-                            <input type="text" name="infoName" id="infoName" class="infoInput">
+      <div id="outerBox">
+        <div id="profileBox">
+          <div class="container">
+            <div id="info" class="flexItem">
+              <form id="infoForm">
+                <label for="infoName" class="label" class="infoLabel"
+                  >NAME</label
+                >
+                <input
+                  type="text"
+                  name="infoName"
+                  id="infoName"
+                  class="infoInput"
+                />
 
-                            <label for="infoEmail" class="label" class="infoLabel">EMAIL</label>
-                            <input type="text" name="infoEmail" id="infoEmail" class="infoInput">
+                <label for="infoEmail" class="label" class="infoLabel"
+                  >EMAIL</label
+                >
+                <input
+                  type="text"
+                  name="infoEmail"
+                  id="infoEmail"
+                  class="infoInput"
+                />
 
-                            <label for="infoPassword" class="label" class="infoLabel">PASSWORD</label>
-                            <input type="password" name="infoPassword" id="infoPassword" class="infoInput">
+                <label for="infoPassword" class="label" class="infoLabel"
+                  >PASSWORD</label
+                >
+                <input
+                  type="password"
+                  name="infoPassword"
+                  id="infoPassword"
+                  class="infoInput"
+                />
 
-                            <button type="button" id="saveInfoBtn" class="profileBtn">SAVE</button>
-                        </form>
-                    </div>
-
-                    <div id="avatar" class="flexItem">
-                        <div class="avatarBox">
-                            <img src="/pandaAva.webp" alt="">
-                        </div>
-                        <button id="reloadBtn">
-                            <div id="reload">
-                                <img src="/reload.svg" alt="" id="reloadIcon">
-                            </div>
-                        </button>
-                        <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
-                    </div>
-
-                    <div id="about" class="flexItem">
-                        <form id="aboutForm">
-                            <label for="aboutBox" class="label">ABOUT</label><br>
-                            <input type="text" name="aboutBox" id="aboutBox">
-                        </form>
-                        </div>
-                    </div>
-                </div>
+                <button type="button" id="saveInfoBtn" class="profileBtn"
+                  >SAVE</button
+                >
+              </form>
             </div>
+
+            <div id="avatar" class="flexItem">
+              <div class="avatarBox">
+                <img src="/pandaAva.webp" alt="" />
+              </div>
+              <button id="reloadBtn">
+                <div id="reload">
+                  <img src="/reload.svg" alt="" id="reloadIcon" />
+                </div>
+              </button>
+              <button type="button" id="saveAvatarBtn" class="profileBtn"
+                >SAVE</button
+              >
+            </div>
+
+            <div id="about" class="flexItem">
+              <form id="aboutForm">
+                <label for="aboutBox" class="label">ABOUT</label><br />
+                <input type="text" name="aboutBox" id="aboutBox" />
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-</div>
+  </div>
 </Layout>
 
 <script>
-    import storedLogin from "./registration.astro";
+  import storedLogin from "./registration.astro";
 
-    const username = sessionStorage.getItem("userName");
-    const password = sessionStorage.getItem("passWord");
-    let headerName = document.getElementById("span");
-    const labelName = document.getElementById("infoName") as HTMLInputElement;
-    const labelPassword = document.getElementById('infoPassword');
-    const saveInfoBtn = document.getElementById('saveInfoBtn');
-    
-    console.log(storedLogin);
+  const username = sessionStorage.getItem("userName");
+  const password = sessionStorage.getItem("passWord");
+  let headerName = document.getElementById("span");
+  const labelName = document.getElementById("infoName") as HTMLInputElement;
+  const labelPassword = document.getElementById("infoPassword");
+  const saveInfoBtn = document.getElementById("saveInfoBtn");
 
-    labelName.value = username;
+  console.log(storedLogin);
 
+  labelName.value = username;
 
+  saveInfoBtn.addEventListener("click", function () {
+    // Prevent the default form submission
+    event.preventDefault();
 
+    // Get form data
+    const username = (document.getElementById("username") as HTMLInputElement)
+      .value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
+      .value;
 
-    saveInfoBtn.addEventListener('click', function(){
-            // Prevent the default form submission
-            event.preventDefault();
+    // Log the data to the console (you can remove this in production)
+    console.log("Username:", username);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-            // Get form data
-            const username = (document.getElementById('username') as HTMLInputElement).value;
-            const email = (document.getElementById('email') as HTMLInputElement).value;
-            const password = (document.getElementById('password') as HTMLInputElement).value;
+    // Create an object with the form data
+    const formData = {
+      username: username,
+      email: email,
+      password: password,
+    };
+  });
 
-            // Log the data to the console (you can remove this in production)
-            console.log('Username:', username);
-            console.log('Email:', email);
-            console.log('Password:', password);
+  let carousel = document.querySelector(".avatarBox");
+  let icons = carousel.querySelectorAll("img");
 
-            // Create an object with the form data
-            const formData = {
-                username: username,
-                email: email,
-                password: password
-            };
-    })
+  //shuffling the questions - randomly ordered carousel
+  icons = Array.from(icons);
+  icons.sort(function () {
+    return 0.5 - Math.random();
+  });
+  for (let i = 0; i < icons.length; i++) {
+    carousel.appendChild(icons[i]);
+  }
 
+  let nextButton = document.querySelector("#next");
+  let prevButton = document.querySelector("#prev");
+  let counter = 0;
 
+  refreshCarousel();
 
-
-
-    let carousel = document.querySelector(".avatarBox");
-    let icons = carousel.querySelectorAll("img");
-
-
-
-    //shuffling the questions - randomly ordered carousel
-    icons = Array.from(icons);
-    icons.sort(function(){
-        return 0.5 - Math.random();
-    })
-    for(let i=0; i<icons.length; i++){
-        carousel.appendChild(icons[i]);
+  //buttons
+  nextButton.addEventListener("click", function () {
+    if (counter < icons.length - 1) {
+      counter++;
+      refreshCarousel();
     }
+  });
 
-
-
-
-    let nextButton = document.querySelector("#next");
-    let prevButton = document.querySelector("#prev");
-    let counter = 0;
-
-    refreshCarousel()
-
-
-    //buttons
-    nextButton.addEventListener("click", function(){
-        if(counter < icons.length-1) {
-            counter++;
-            refreshCarousel();
-        }
-    })
-
-    prevButton.addEventListener("click", function(){
-        if(counter > 0) {
-            counter--;
-            refreshCarousel();
-        }
-    })
-
-
-
-    //function to hide all questions and show one  
-    function refreshCarousel(){
-        for (let i=0; i<icons.length; i++) {
-            icons[i].style.display = "none";
-        }
-        icons[counter].style.display = "block";
+  prevButton.addEventListener("click", function () {
+    if (counter > 0) {
+      counter--;
+      refreshCarousel();
     }
+  });
 
-
+  //function to hide all questions and show one
+  function refreshCarousel() {
+    for (let i = 0; i < icons.length; i++) {
+      icons[i].style.display = "none";
+    }
+    icons[counter].style.display = "block";
+  }
 </script>
 
-
 <style>
-    #hero {
-        width: 100;
-        height: 16rem;
-        background: var(--MAINGR, linear-gradient(160deg, #000 25.43%, #8C5EE7 140.97%));
-        display: flex;
-    }
+  #hero {
+    width: 100;
+    height: 16rem;
+    background: var(
+      --MAINGR,
+      linear-gradient(160deg, #000 25.43%, #8c5ee7 140.97%)
+    );
+    display: flex;
+  }
 
-    .flexItem {
-        width: 30%;
-    }
+  .flexItem {
+    width: 30%;
+  }
 
-    #heroUsername {
-        color: #FFF;
-        padding-top: 3.6rem;
-        text-align: center;
-        align-items: center;
-        margin: auto;
-        font-family: "Libre Barcode 39 Extended Text";
-        font-size: 120px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  #heroUsername {
+    color: #fff;
+    padding-top: 3.6rem;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    font-family: "Libre Barcode 39 Extended Text";
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
   #outerBox {
     width: 1152px;
@@ -196,140 +207,136 @@ import storedLogin from "./registration.astro";
     background: #fff;
   }
 
-    .container {
-        margin: 1.7rem;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
+  .container {
+    margin: 1.7rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
-    .profileBtn {
-        background-color: #8C5EE7;
-        border-radius: 13px;
-        border: none;
-        color: #FFF;
-        text-align: center;
-        font-family: "M PLUS 2";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        padding: .3rem;
-        width: 5rem;
-    }
+  .profileBtn {
+    background-color: #8c5ee7;
+    border-radius: 13px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0.3rem;
+    width: 5rem;
+  }
 
-    #saveInfoBtn {
-        margin: 0 auto;
+  #saveInfoBtn {
+    margin: 0 auto;
+  }
 
-    }
+  #reloadBtn {
+    padding: 0.5rem 0.6rem;
+    border-radius: 300px;
+    border: none;
+    background-color: #8c5ee7;
+    position: relative;
+    bottom: 60px;
+    left: 80px;
+  }
 
-    #reloadBtn {
-        padding: .5rem .6rem;
-        border-radius: 300px;
-        border: none;
-        background-color: #8C5EE7;
-        position: relative;
-        bottom: 60px;
-        left: 80px;
-    }
+  #reloadIcon {
+    width: 30px;
+  }
 
-    #reloadIcon {
-        width: 30px;
-    }
+  #saveAvatarBtn {
+    margin: 1.2rem;
+  }
 
+  .label {
+    color: #50f;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    #saveAvatarBtn {
-        margin: 1.2rem;
-    }
+  #info {
+    width: 30%;
+  }
 
-    .label {
-        color: #50F;
-        text-align: center;
-        font-family: "M PLUS 2";
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  #about {
+    width: fit-content;
+  }
 
-    #info {
-        width: 30%;
-    }
+  #infoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
 
-    #about {
-        width: fit-content;
-    }
+  .infoInput {
+    margin: 0.3rem 0 1.2rem 0;
+    padding: 0.6rem;
+    width: 93%;
+    border-radius: 10px;
+    border: 2px solid #8c5ee7;
+    background: #e2dbf0;
+    color: #000;
+    font-family: "M PLUS 2";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-    #infoForm {
-        display: flex;
-        flex-direction: column;
-        align-items: baseline;
-    }
+  #avatar {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .infoInput {
-        margin: .3rem 0 1.2rem 0;
-        padding: .6rem;
-        width: 93%;
-        border-radius: 10px;
-        border: 2px solid #8C5EE7;
-        background: #E2DBF0;
-        color: #000;
-        font-family: "M PLUS 2";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+  .avatarBox {
+    margin: 0 auto;
+    width: fit-content;
+    background-color: #e2dbf0;
+    border-radius: 300px;
+    padding: 1rem;
+  }
 
-    #avatar {
-        display: flex;
-        justify-items: center;
-        flex-direction: column;
-        align-items: center;
-    }
+  #aboutBox {
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: 2px solid #8c5ee7;
+    background: #e2dbf0;
+    width: 18rem;
+    height: 18rem;
+    color: #000;
+    font-family: "M PLUS 2";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 
-    .avatarBox {
-        margin: 0 auto;
-        width: fit-content;
-        background-color: #E2DBF0;
-        border-radius: 300px;
-        padding: 1rem;
+  .infoInput:focus {
+    background: #ebe7f3;
+    transition: ease-in-out 0.2s;
+  }
 
-    }
+  #aboutBox:focus {
+    background: #ebe7f3;
+    transition: ease-in-out 0.2s;
+  }
 
-    #aboutBox {
-        padding: .6rem;
-        border-radius: 10px;
-        border: 2px solid #8C5EE7;
-        background: #E2DBF0;
-        width: 18rem;
-        height: 18rem;
-        color: #000;
-        font-family: "M PLUS 2";
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        word-wrap: break-word;
-        word-break: break-all;
-    }
+  .profileBtn:active {
+    background-color: #773bef;
+  }
 
-    .infoInput:focus {
-        background: #ebe7f3;
-        transition: ease-in-out .2s;
-    }
-
-    #aboutBox:focus {
-        background: #ebe7f3;
-        transition: ease-in-out .2s;
-    }
-
-    .profileBtn:active {
-        background-color: #773bef;
-    }
-
-    #reloadBtn:active {
-        background-color: #773bef;
-    }
-
+  #reloadBtn:active {
+    background-color: #773bef;
+  }
 </style>
