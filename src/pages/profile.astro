@@ -1,55 +1,55 @@
 ---
 import Layout from "./layout.astro";
+import storedLogin from "./registration.astro";
 ---
 
-<Layout >
-    <div>
-        <section id="hero">
-            <div id="heroUsername">
-                <span id="span">USERNAME</span>
-            </div>
-        </section>
+<Layout>
+<div>
+    <section id="hero">
+      <div id="heroUsername">
+        <span id="span">USERNAME</span>
+      </div>
+    </section>
 
-        <section id="main">
-            <div id="outerBox">
-                <div id="profileBox">
-                    <div class="container">
-                        <div id="info" class="flexItem">
-                            <form id="infoForm">
-                                <label for="infoName" class="label" class="infoLabel">NAME</label>
-                                <input type="text" name="infoName" id="infoName" class="infoInput">
+    <section id="main">
+        <div id="outerBox">
+            <div id="profileBox">
+                <div class="container">
+                    <div id="info" class="flexItem">
+                        <form id="infoForm">
+                            <label for="infoName" class="label" class="infoLabel">NAME</label>
+                            <input type="text" name="infoName" id="infoName" class="infoInput">
 
-                                <label for="infoEmail" class="label" class="infoLabel">EMAIL</label>
-                                <input type="text" name="infoEmail" id="infoEmail" class="infoInput">
+                            <label for="infoEmail" class="label" class="infoLabel">EMAIL</label>
+                            <input type="text" name="infoEmail" id="infoEmail" class="infoInput">
 
-                                <label for="infoPassword" class="label" class="infoLabel">PASSWORD</label>
-                                <input type="password" name="infoPassword" id="infoPassword" class="infoInput">
+                            <label for="infoPassword" class="label" class="infoLabel">PASSWORD</label>
+                            <input type="password" name="infoPassword" id="infoPassword" class="infoInput">
 
-                                <button type="button" id="saveInfoBtn" class="profileBtn">SAVE</button>
-                            </form>
+                            <button type="button" id="saveInfoBtn" class="profileBtn">SAVE</button>
+                        </form>
+                    </div>
+
+                    <div id="avatar" class="flexItem">
+                        <div class="avatarBox">
+                            <img src="/pandaAva.webp" alt="">
                         </div>
+                        <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
+                    </div>
 
-                        <div id="avatar" class="flexItem">
-                            <div class="avatarBox">
-                                <img src="/pandaAva.webp" alt="">
-                            </div>
-                            <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
-                        </div>
-
-                        <div id="about" class="flexItem">
-                            <form id="aboutForm">
-                                <label for="aboutBox" class="label">ABOUT</label><br>
-                                <input type="text" name="aboutBox" id="aboutBox">
-                            </form>
-                            </div>
+                    <div id="about" class="flexItem">
+                        <form id="aboutForm">
+                            <label for="aboutBox" class="label">ABOUT</label><br>
+                            <input type="text" name="aboutBox" id="aboutBox">
+                        </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 </Layout>
-
 
 <script>
     import storedLogin from "./registration.astro";
@@ -107,6 +107,8 @@ import Layout from "./layout.astro";
     #heroUsername {
         color: #FFF;
         padding-top: 3.6rem;
+        text-align: center;
+        align-items: center;
         margin: auto;
         font-family: "Libre Barcode 39 Extended Text";
         font-size: 120px;
@@ -115,24 +117,24 @@ import Layout from "./layout.astro";
         line-height: normal;
     }
 
-    #outerBox {
-        width: 1152px;
-        height: 625px;
-        margin: auto;
-        margin-top: 2.5rem;
-        border-radius: 35px;
-        background: rgba(237, 233, 246, 0.41);
-        display: grid;
-    }
+  #outerBox {
+    width: 1152px;
+    height: 625px;
+    margin: auto;
+    margin-top: 2.5rem;
+    border-radius: 35px;
+    background: rgba(237, 233, 246, 0.41);
+    display: grid;
+  }
 
-    #profileBox {
-        width: 1076px;
-        height: 544px;
-        margin: auto;
-        flex-shrink: 0;
-        border-radius: 15px;
-        background: #FFF;
-    }
+  #profileBox {
+    width: 1076px;
+    height: 544px;
+    margin: auto;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #fff;
+  }
 
     .container {
         margin: 1.7rem;
@@ -248,7 +250,5 @@ import Layout from "./layout.astro";
     .profileBtn:active {
         background-color: #773bef;
     }
-
-    
 
 </style>
