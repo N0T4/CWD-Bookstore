@@ -4,7 +4,7 @@ import storedLogin from "./registration.astro";
 ---
 
 <Layout>
-  <div>
+<div>
     <section id="hero">
       <div id="heroUsername">
         <span id="span">USERNAME</span>
@@ -12,64 +12,110 @@ import storedLogin from "./registration.astro";
     </section>
 
     <section id="main">
-      <div id="outerBox">
-        <div id="profileBox">
-          <div class="container">
-            <div>
-              <ul class="userInfo">
-                <li class="name">
-                  <span>NAME</span>
-                </li>
-                <li class="email">
-                  <span>NAME</span>
-                </li>
-                <li>
-                  <span>PASSWORD</span>
-                </li>
-                <li class="password">SAVE KJBCISHVie</li>
-              </ul>
+        <div id="outerBox">
+            <div id="profileBox">
+                <div class="container">
+                    <div id="info" class="flexItem">
+                        <form id="infoForm">
+                            <label for="infoName" class="label" class="infoLabel">NAME</label>
+                            <input type="text" name="infoName" id="infoName" class="infoInput">
+
+                            <label for="infoEmail" class="label" class="infoLabel">EMAIL</label>
+                            <input type="text" name="infoEmail" id="infoEmail" class="infoInput">
+
+                            <label for="infoPassword" class="label" class="infoLabel">PASSWORD</label>
+                            <input type="password" name="infoPassword" id="infoPassword" class="infoInput">
+
+                            <button type="button" id="saveInfoBtn" class="profileBtn">SAVE</button>
+                        </form>
+                    </div>
+
+                    <div id="avatar" class="flexItem">
+                        <div class="avatarBox">
+                            <img src="/pandaAva.webp" alt="">
+                        </div>
+                        <button type="button" id="saveAvatarBtn" class="profileBtn">SAVE</button>
+                    </div>
+
+                    <div id="about" class="flexItem">
+                        <form id="aboutForm">
+                            <label for="aboutBox" class="label">ABOUT</label><br>
+                            <input type="text" name="aboutBox" id="aboutBox">
+                        </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              <div class="avatarBox">
-                <img src="/pandaAva.webp" alt="" />
-              </div>
-               SAVE
-            </div>
-            <div>
-              <span>ABOUT</span>
-              <div class="aboutProfileBox">gg</div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
-  </div>
+</div>
 </Layout>
 
-<script></script>
+<script>
+    import storedLogin from "./registration.astro";
+
+    const username = sessionStorage.getItem("userName");
+    const password = sessionStorage.getItem("passWord");
+    let headerName = document.getElementById("span");
+    let labelName = document.getElementById("infoName") as HTMLInputElement;
+    const saveInfoBtn = document.getElementById('saveInfoBtn');
+    
+    console.log(storedLogin);
+
+    labelName.value = username;
+
+
+
+
+    saveInfoBtn.addEventListener('click', function(){
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get form data
+            const username = (document.getElementById('username') as HTMLInputElement).value;
+            const email = (document.getElementById('email') as HTMLInputElement).value;
+            const password = (document.getElementById('password') as HTMLInputElement).value;
+
+            // Log the data to the console (you can remove this in production)
+            console.log('Username:', username);
+            console.log('Email:', email);
+            console.log('Password:', password);
+
+            // Create an object with the form data
+            const formData = {
+                username: username,
+                email: email,
+                password: password
+            };
+    })
+
+</script>
+
 
 <style>
-  #hero {
-    width: 100;
-    height: 235px;
-    background: var(
-      --MAINGR,
-      linear-gradient(160deg, #000 25.43%, #8c5ee7 140.97%)
-    );
-    display: flex;
-  }
+    #hero {
+        width: 100;
+        height: 16rem;
+        background: var(--MAINGR, linear-gradient(160deg, #000 25.43%, #8C5EE7 140.97%));
+        display: flex;
+    }
 
-  #heroUsername {
-    color: #fff;
-    text-align: center;
-    align-items: center;
-    margin: auto;
-    font-family: "Libre Barcode 39 Extended Text";
-    font-size: 120px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
+    .flexItem {
+        width: 30%;
+    }
+
+    #heroUsername {
+        color: #FFF;
+        padding-top: 3.6rem;
+        text-align: center;
+        align-items: center;
+        margin: auto;
+        font-family: "Libre Barcode 39 Extended Text";
+        font-size: 120px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
 
   #outerBox {
     width: 1152px;
@@ -90,33 +136,119 @@ import storedLogin from "./registration.astro";
     background: #fff;
   }
 
-  .container {
-    margin: 1.7rem;
-    display: flex;
-    justify-content: space-between;
-  }
+    .container {
+        margin: 1.7rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
-  .container span {
-    color: #50f;
-    text-align: center;
-    font-family: "M PLUS 2";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
+    .profileBtn {
+        background-color: #8C5EE7;
+        border-radius: 13px;
+        border: none;
+        color: #FFF;
+        text-align: center;
+        font-family: "M PLUS 2";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: .3rem;
+        width: 5rem;
+    }
 
-  .avatarBox {
-    background-color: #e2dbf0;
-    border-radius: 300px;
-    padding: 1rem;
-  }
+    #saveInfoBtn {
+        margin: 0 auto;
 
-  .aboutProfileBox {
-    border-radius: 10px;
-    border: 2px solid #8c5ee7;
-    background: #e2dbf0;
-    width: 18rem;
-    height: 18rem;
-  }
+    }
+
+    #saveAvatarBtn {
+        margin: 1.2rem;
+    }
+
+    .label {
+        color: #50F;
+        text-align: center;
+        font-family: "M PLUS 2";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    #info {
+        width: 30%;
+    }
+
+    #about {
+        width: fit-content;
+    }
+
+    #infoForm {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .infoInput {
+        margin: .3rem 0 1.2rem 0;
+        padding: .6rem;
+        width: 93%;
+        border-radius: 10px;
+        border: 2px solid #8C5EE7;
+        background: #E2DBF0;
+        color: #000;
+        font-family: "M PLUS 2";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    #avatar {
+        display: flex;
+        justify-items: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .avatarBox {
+        margin: 0 auto;
+        width: fit-content;
+        background-color: #E2DBF0;
+        border-radius: 300px;
+        padding: 1rem;
+
+    }
+
+    #aboutBox {
+        padding: .6rem;
+        border-radius: 10px;
+        border: 2px solid #8C5EE7;
+        background: #E2DBF0;
+        width: 18rem;
+        height: 18rem;
+        color: #000;
+        font-family: "M PLUS 2";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .infoInput:focus {
+        background: #ebe7f3;
+        transition: ease-in-out .2s;
+    }
+
+    #aboutBox:focus {
+        background: #ebe7f3;
+        transition: ease-in-out .2s;
+    }
+
+    .profileBtn:active {
+        background-color: #773bef;
+    }
+
 </style>
