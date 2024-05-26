@@ -7,9 +7,31 @@ import Layout from "./layout.astro";
         <img src="../../locationimg.jpg" />
         <h1>BOOK STORE</h1>
     </section>
+    <div class="container">
+        <h2>LOCATION</h2>
+        <section class="about">
+          <div class="left">
+            <p>Shibuya Parco</p>
+            <p>Shibuya City
+                <br>Tokyo 150-8377
+                <br>JAPAN
+            </p>
+            <p>PHONE: 
+                <br>+81334645111</p>
+          </div>
+          <div class="right">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482.47615114553946!2d139.69865210909413!3d35.662166041149234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca8e2fe2173%3A0x1adbb1909538391b!2sShibuya%20Parco!5e0!3m2!1sru!2sie!4v1716741735031!5m2!1sru!2sie" style="border:0; margin-top: 48px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </section>
+      </div>
 </Layout>
 
 <style>
+    .container {
+    width: 1152px;
+    margin: 0 auto;
+    }
+
     .headimage {
     overflow: hidden;
     width: 100%;
@@ -40,5 +62,162 @@ import Layout from "./layout.astro";
     width: 100%;
     height: 600px;
     opacity: 0.4;
+  }
+  .left>p {
+    color: #000;
+    text-align: left;
+    font-family: "M PLUS 2";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .right>iframe{
+    width: 650px;
+    height: 550px;
+  }
+
+  .about {
+    display: flex;
+    gap: 81px;
+    margin-top: 21px;
+    margin-bottom: 92px;
+  }
+  h2 {
+    text-align: center;
+    color: #000;
+    text-align: center;
+    font-family: "M PLUS 2";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  @media screen and (max-width: 1152px) {
+    .container {
+      width: 768px;
+    }
+    .headimage{
+        height: 400px;
+    }
+    .about {
+      flex-direction: column;
+      align-items: center;
+      gap: 0px;
+      margin-bottom: 0px;
+    }
+    .left {
+      box-sizing: border-box;
+      padding: 10px;
+    }
+    .left>p {
+        font-size: 32px;
+        text-align: center;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      margin-bottom: 25px;
+      gap: 0px;
+      width: 700px;
+      height: 400px;
+    }
+    img {
+      width: 670px;
+      height: 435px;
+    }
+    .right>iframe{
+    width: 670px;
+    height: 450px;
+  }
+  }
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 320px;
+    }
+    img {
+      width: 100%;
+      height: 160px;
+      width: 500px;
+    height: 400px;
+    }
+    .left>p{
+        text-align: center;
+    }
+    .right {
+      gap: 20px;
+      width: 500px;
+    }
+    .headimage{
+      height: 300px;
+    }
+    .right>iframe{
+    width: 500px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 500px) {
+    .container {
+      width: 320px;
+    }
+    img {
+      width: 100%;
+      height: 160px;
+      width: 500px;
+    height: 400px;
+    }
+    .left>p{
+        text-align: center;
+    }
+    .right {
+      gap: 20px;
+      width: 420px;
+    }
+    .headimage{
+      height: 300px;
+    }
+    .right>iframe{
+    width: 420px;
+    height: 400px;
+  }
+}
+  @media screen and (max-width: 320px) {
+    .container {
+      width: 320px;
+    }
+    .headimage{
+        height: 200px;
+    }
+    .headimage>img{
+        height: 200px;
+    }
+    .headimage>h1{
+        font-size: 60px;
+    }
+    img {
+      width: 100%;
+      height: 160px;
+      width: 500px;
+    height: 400px;
+    }
+    .left>p{
+        text-align: center;
+    }
+    .right {
+      gap: 20px;
+      width: 100%;
+      height: 350px;
+    }
+    .right>iframe{
+    width: 100%;
+    height: 350px;
+    }
+
   }
 </style>
