@@ -51,11 +51,9 @@
       const password = passwordInput.value;
 
       if (login.length >= 4 && password.length >= 4) {
-        // Store the data in local storage
         localStorage.setItem("login", login);
         localStorage.setItem("password", password);
 
-        // Redirect to profile page
         window.location.href = "/profile.html";
       } else {
         alert("Username and password must be at least 4 characters long.");
